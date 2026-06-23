@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UTE BERURI - Gestão de Anomalias</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+background:#f4f6f8;
+}
+
+header{
+background:#0f8a4b;
+color:#fff;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.card h3{
+font-size:14px;
+color:#666;
+}
+
+.card span{
+font-size:28px;
+font-weight:bold;
+}
+
+.map{
+position:relative;
+width:95%;
+height:900px;
+margin:auto;
+border-radius:15px;
+
+background-image:
+linear-gradient(
+rgba(0,0,0,.15),
+rgba(0,0,0,.15)
+),
+url('imgberuri.png');
+
+background-size:contain;
+background-position:center;
+background-repeat:no-repeat;
+background-color:white;
+}
+
+.pin{
+position:absolute;
+width:36px;
+height:36px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+cursor:pointer;
+border:2px solid white;
+color:white;
+box-shadow:0 0 10px rgba(0,0,0,.4);
+}
+
+.verde{background:#0f8a4b;}
+.amarelo{background:#ffc107;color:black;}
+.vermelho{background:#e53935;}
+.azul{background:#2196f3;}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.6);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+width:90%;
+max-width:700px;
+background:white;
+padding:20px;
+border-radius:15px;
+}
+
+input,textarea,select{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+margin-top:10px;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.salvar{
+background:#0f8a4b;
+color:white;
+}
+
+.fechar{
+background:#e53935;
+color:white;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+margin-top:20px;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+}
+
+th{
+background:#0f8a4b;
+color:white;
+}
+
+.container{
+padding:20px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div>
+<h2>UTE BERURI</h2>
+<div>Sistema de Gestão de Anomalias</div>
+</div>
+
+<div id="hora"></div>
+</header>
+
+<div class="dashboard">
+
+<div class="card">
+<h3>Sem Pendências</h3>
+<span>21</span>
+</div>
+
+<div class="card">
+<h3>Em Acompanhamento</h3>
+<span>0</span>
+</div>
+
+<div class="card">
+<h3>Críticas</h3>
+<span>0</span>
+</div>
+
+<div class="card">
+<h3>Concluídas</h3>
+<span>0</span>
+</div>
+
+</div>
+
+<div class="map">
+
+<!-- Ajuste as posições conforme sua planta -->
+
+<div class="pin verde" style="top:82%;left:74%" onclick="abrir(1)">1</div>
+<div class="pin verde" style="top:73%;left:74%" onclick="abrir(2)">2</div>
+<div class="pin verde" style="top:64%;left:74%" onclick="abrir(3)">3</div>
+<div class="pin verde" style="top:55%;left:74%" onclick="abrir(4)">4</div>
+<div class="pin verde" style="top:46%;left:74%" onclick="abrir(5)">5</div>
+<div class="pin verde" style="top:37%;left:74%" onclick="abrir(6)">6</div>
+<div class="pin verde" style="top:28%;left:74%" onclick="abrir(7)">7</div>
+
+<div class="pin verde" style="top:82%;left:58%" onclick="abrir(8)">8</div>
+<div class="pin verde" style="top:73%;left:58%" onclick="abrir(9)">9</div>
+<div class="pin verde" style="top:64%;left:58%" onclick="abrir(10)">10</div>
+<div class="pin verde" style="top:55%;left:58%" onclick="abrir(11)">11</div>
+<div class="pin verde" style="top:46%;left:58%" onclick="abrir(12)">12</div>
+<div class="pin verde" style="top:37%;left:58%" onclick="abrir(13)">13</div>
+<div class="pin verde" style="top:28%;left:58%" onclick="abrir(14)">14</div>
+
+<div class="pin verde" style="top:75%;left:22%" onclick="abrir(15)">15</div>
+<div class="pin verde" style="top:60%;left:22%" onclick="abrir(16)">16</div>
+<div class="pin verde" style="top:45%;left:22%" onclick="abrir(17)">17</div>
+
+<div class="pin verde" style="top:20%;left:30%" onclick="abrir(18)">18</div>
+<div class="pin verde" style="top:15%;left:25%" onclick="abrir(19)">19</div>
+<div class="pin verde" style="top:10%;left:20%" onclick="abrir(20)">20</div>
+<div class="pin verde" style="top:20%;left:15%" onclick="abrir(21)">21</div>
+
+</div>
+
+<div class="container">
+
+<h2>Histórico</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>UGD</th>
+<th>Título</th>
+<th>Status</th>
+<th>Prioridade</th>
+<th>Responsável</th>
+</tr>
+</thead>
+
+<tbody id="historico"></tbody>
+
+</table>
+
+</div>
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h2 id="tituloUGD"></h2>
+
+<input id="titulo" placeholder="Título">
+
+<textarea id="descricao" rows="4" placeholder="Descrição"></textarea>
+
+<select id="prioridade">
+<option>Baixa</option>
+<option>Média</option>
+<option>Alta</option>
+<option>Emergencial</option>
+</select>
+
+<select id="status">
+<option>Aberto</option>
+<option>Em andamento</option>
+<option>Crítico</option>
+<option>Concluído</option>
+</select>
+
+<input id="responsavel" placeholder="Responsável">
+
+<button class="salvar" onclick="salvar()">Salvar</button>
+<button class="fechar" onclick="fecharModal()">Fechar</button>
+
+</div>
+
+</div>
+
+<script>
+
+let ugdAtual = 0;
+
+function abrir(numero){
+ugdAtual = numero;
+document.getElementById("tituloUGD").innerText =
+"Ocorrência - UGD " + numero;
+document.getElementById("modal").style.display="flex";
+}
+
+function fecharModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function salvar(){
+
+const tabela =
+document.getElementById("historico");
+
+tabela.innerHTML += `
+<tr>
+<td>${ugdAtual}</td>
+<td>${titulo.value}</td>
+<td>${status.value}</td>
+<td>${prioridade.value}</td>
+<td>${responsavel.value}</td>
+</tr>
+`;
+
+fecharModal();
+
+}
+
+setInterval(()=>{
+document.getElementById("hora").innerHTML =
+new Date().toLocaleString("pt-BR");
+},1000);
+
+</script>
+
+</body>
+</html>
