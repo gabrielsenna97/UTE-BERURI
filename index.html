@@ -1,115 +1,152 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTE BERURI - Gestão de Anomalias</title>
 
-body{
-background:#f4f6f8;
-}
+<link rel="stylesheet" href="style.css">
+</head>
 
-header{
-background:#0f8a4b;
-color:white;
-padding:15px;
-display:flex;
-justify-content:space-between;
-}
+<body>
 
-.dashboard{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-padding:20px;
-}
+<header>
 
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
+<div>
+<h1>UTE BERURI</h1>
+<p>Sistema de Gestão de Anomalias</p>
+</div>
 
-.card span{
-font-size:28px;
-font-weight:bold;
-}
+<div id="hora"></div>
 
-.map{
-position:relative;
-width:95%;
-margin:auto;
-}
+</header>
 
-.planta{
-width:100%;
-}
+<section class="dashboard">
 
-.pin{
-position:absolute;
-width:36px;
-height:36px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-cursor:pointer;
-color:white;
-}
+<div class="card">
+<h3>Total</h3>
+<span id="total">0</span>
+</div>
 
-.verde{background:#0f8a4b;}
-.amarelo{background:#ffc107;color:black;}
-.vermelho{background:#e53935;}
-.azul{background:#2196f3;}
+<div class="card amarelo">
+<h3>Abertas</h3>
+<span id="abertas">0</span>
+</div>
 
-.container{
-padding:20px;
-}
+<div class="card azul">
+<h3>Em Andamento</h3>
+<span id="andamento">0</span>
+</div>
 
-table{
-width:100%;
-background:white;
-border-collapse:collapse;
-}
+<div class="card vermelho">
+<h3>Críticas</h3>
+<span id="criticas">0</span>
+</div>
 
-th{
-background:#0f8a4b;
-color:white;
-padding:12px;
-}
+<div class="card verde">
+<h3>Concluídas</h3>
+<span id="concluidas">0</span>
+</div>
 
-td{
-padding:10px;
-border-bottom:1px solid #ddd;
-}
+</section>
 
-input,select,textarea{
-width:100%;
-padding:10px;
-margin-top:10px;
-}
+<section class="map" id="mapa">
 
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.5);
-justify-content:center;
-align-items:center;
-}
+<img src="imgberuri.jpg" class="planta">
 
-.modal-content{
-background:white;
-padding:20px;
-width:90%;
-max-width:700px;
-border-radius:15px;
-}
+<div class="pin verde" style="top:82%;left:74%" onclick="abrir(1)">1</div>
+<div class="pin verde" style="top:73%;left:74%" onclick="abrir(2)">2</div>
+<div class="pin verde" style="top:64%;left:74%" onclick="abrir(3)">3</div>
+<div class="pin verde" style="top:55%;left:74%" onclick="abrir(4)">4</div>
+<div class="pin verde" style="top:46%;left:74%" onclick="abrir(5)">5</div>
+<div class="pin verde" style="top:37%;left:74%" onclick="abrir(6)">6</div>
+<div class="pin verde" style="top:28%;left:74%" onclick="abrir(7)">7</div>
 
-button{
-padding:12px;
-margin-top:10px;
-cursor:pointer;
-}
+<div class="pin verde" style="top:82%;left:58%" onclick="abrir(8)">8</div>
+<div class="pin verde" style="top:73%;left:58%" onclick="abrir(9)">9</div>
+<div class="pin verde" style="top:64%;left:58%" onclick="abrir(10)">10</div>
+<div class="pin verde" style="top:55%;left:58%" onclick="abrir(11)">11</div>
+<div class="pin verde" style="top:46%;left:58%" onclick="abrir(12)">12</div>
+<div class="pin verde" style="top:37%;left:58%" onclick="abrir(13)">13</div>
+<div class="pin verde" style="top:28%;left:58%" onclick="abrir(14)">14</div>
+
+<div class="pin verde" style="top:75%;left:22%" onclick="abrir(15)">15</div>
+<div class="pin verde" style="top:60%;left:22%" onclick="abrir(16)">16</div>
+<div class="pin verde" style="top:45%;left:22%" onclick="abrir(17)">17</div>
+
+<div class="pin verde" style="top:20%;left:30%" onclick="abrir(18)">18</div>
+<div class="pin verde" style="top:15%;left:25%" onclick="abrir(19)">19</div>
+<div class="pin verde" style="top:10%;left:20%" onclick="abrir(20)">20</div>
+<div class="pin verde" style="top:20%;left:15%" onclick="abrir(21)">21</div>
+
+</section>
+
+<section class="container">
+
+<input type="text" id="pesquisa" placeholder="Pesquisar ocorrência...">
+
+<table>
+
+<thead>
+<tr>
+<th>UGD</th>
+<th>OS</th>
+<th>Título</th>
+<th>Status</th>
+<th>Prioridade</th>
+<th>Responsável</th>
+<th>Data</th>
+</tr>
+</thead>
+
+<tbody id="historico"></tbody>
+
+</table>
+
+</section>
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h2 id="tituloUGD"></h2>
+
+<input id="os" placeholder="Número da OS">
+
+<input id="titulo" placeholder="Título">
+
+<textarea id="descricao" placeholder="Descrição"></textarea>
+
+<select id="categoria">
+<option>Mecânica</option>
+<option>Elétrica</option>
+<option>Instrumentação</option>
+<option>Operação</option>
+</select>
+
+<select id="prioridade">
+<option>Baixa</option>
+<option>Média</option>
+<option>Alta</option>
+<option>Crítica</option>
+</select>
+
+<select id="status">
+<option>Aberto</option>
+<option>Em Andamento</option>
+<option>Concluído</option>
+</select>
+
+<input id="responsavel" placeholder="Responsável">
+
+<button onclick="salvar()">Salvar</button>
+<button onclick="fechar()">Fechar</button>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
