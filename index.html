@@ -1,232 +1,290 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grupo Geradores UTE Maués</title>
+
+<title>UTE Maués | Grupo Geradores</title>
 
 <style>
+
+:root{
+    --azul:#003b70;
+    --azul-claro:#0066aa;
+    --cinza:#f1f3f5;
+    --preto:#222;
+    --borda:#1c1c1c;
+    --branco:#fff;
+}
+
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:"Segoe UI",Arial,sans-serif;
 }
+
 
 body{
-    background:#ddd;
+    background:#dfe6ec;
     padding:30px;
 }
+
 
 .container{
-    max-width:1200px;
+
+    max-width:1300px;
     margin:auto;
-    background:#fff;
-    padding:30px;
-    border:2px solid #000;
+
+    background:white;
+    padding:35px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.15);
 }
 
-.topo{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+
+
+/* CABEÇALHO */
+
+.header{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+border-bottom:3px solid var(--azul);
+
+padding-bottom:20px;
+margin-bottom:30px;
+
 }
+
 
 .logo{
-    font-size:30px;
-    font-weight:bold;
+
+font-size:28px;
+font-weight:800;
+color:var(--azul);
+
 }
 
-.logo small{
-    display:block;
-    font-size:12px;
-    font-weight:normal;
+
+.logo span{
+
+display:block;
+font-size:13px;
+font-weight:400;
+
 }
+
+
 
 h1{
-    text-align:center;
-    flex:1;
-    font-size:32px;
+
+text-align:center;
+font-size:30px;
+color:#222;
+
 }
 
-.grid-superior{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:15px;
-    margin-bottom:20px;
+
+
+/* GERADORES */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(150px,1fr));
+
+gap:15px;
+
 }
 
-.coluna{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+
+
+.gerador{
+
+height:95px;
+
+border:2px solid var(--borda);
+
+border-radius:8px;
+
+background:
+linear-gradient(
+135deg,
+#fff,
+#eef4f8
+);
+
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+
+transition:.2s;
+
 }
 
-.grande{
-    height:180px;
+
+
+.gerador:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 8px 15px rgba(0,0,0,.15);
+
 }
 
-.bloco{
-    border:2px solid #000;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    min-height:70px;
-}
+
 
 .codigo{
-    font-size:13px;
+
+font-size:13px;
+
+color:#555;
+
 }
+
+
 
 .numero{
-    font-size:36px;
-    font-weight:bold;
-}
 
-.centro{
-    border:2px solid #000;
-    text-align:center;
-    padding:20px;
-    margin:20px auto;
-    width:450px;
-}
+font-size:38px;
 
-.centro h2{
-    margin-bottom:15px;
-}
+font-weight:800;
 
-.inferior{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:40px;
-}
-
-.coluna-inferior{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-@media(max-width:900px){
-
-.grid-superior{
-grid-template-columns:repeat(2,1fr);
-}
-
-.inferior{
-grid-template-columns:repeat(2,1fr);
-}
-
-.centro{
-width:100%;
-}
+color:var(--azul);
 
 }
+
+
+
+/* RESUMO */
+
+.resumo{
+
+margin:35px auto;
+
+max-width:450px;
+
+border:2px solid var(--azul);
+
+border-radius:10px;
+
+padding:25px;
+
+text-align:center;
+
+background:#f8fbff;
+
+}
+
+
+.resumo h2{
+
+color:var(--azul);
+
+margin-bottom:15px;
+
+}
+
+
+.resumo p{
+
+margin:8px;
+
+font-size:18px;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:600px){
+
+body{
+padding:10px;
+}
+
+
+.container{
+padding:20px;
+}
+
+
+.header{
+
+flex-direction:column;
+gap:15px;
+
+}
+
+
+h1{
+
+font-size:22px;
+
+}
+
+}
+
+
 </style>
 
 </head>
+
+
 <body>
+
 
 <div class="container">
 
-<div class="topo">
+
+<header class="header">
+
 <div class="logo">
+
 Oliveira Energia
-<small>Desde 1972</small>
-</div>
 
-<h1>GRUPO GERADORES UTE MAUÉS</h1>
-
-<div style="width:180px"></div>
-</div>
-
-<!-- SUPERIOR -->
-
-<div class="grid-superior">
-
-<div class="coluna">
-
-<div class="bloco"><div class="codigo">550-0583</div><div class="numero">54</div></div>
-<div class="bloco"><div class="codigo">550-0715</div><div class="numero">53</div></div>
-<div class="bloco"><div class="codigo">550-0038R</div><div class="numero">52</div></div>
-<div class="bloco"><div class="codigo">625-0017</div><div class="numero">51</div></div>
-<div class="bloco"><div class="codigo">550-0321R</div><div class="numero">46</div></div>
-<div class="bloco"><div class="codigo">550-0517</div><div class="numero">41</div></div>
+<span>Desde 1972</span>
 
 </div>
 
-<div class="coluna">
 
-<div class="bloco grande">
-<div class="codigo">1808201</div>
-<div class="numero">55</div>
-</div>
+<h1>
+GRUPO GERADORES<br>
+UTE MAUÉS
+</h1>
 
-<div class="bloco"><div class="codigo">550-0297R</div><div class="numero">50</div></div>
-<div class="bloco"><div class="codigo">550-0104R</div><div class="numero">45</div></div>
-<div class="bloco"><div class="codigo">625-0038</div><div class="numero">40</div></div>
 
-</div>
+</header>
 
-<div class="coluna">
 
-<div class="bloco grande">
-<div class="codigo">1808203</div>
-<div class="numero">56</div>
-</div>
 
-<div class="bloco"><div class="codigo">625-0019</div><div class="numero">49</div></div>
-<div class="bloco"><div class="codigo">550-0609R</div><div class="numero">44</div></div>
-<div class="bloco"><div class="codigo">550-0025R</div><div class="numero">39</div></div>
+<section id="geradores" class="grid"></section>
 
-</div>
 
-<div class="coluna">
 
-<div class="bloco grande">
-<div class="codigo">1808198</div>
-<div class="numero">57</div>
-</div>
+<div class="resumo">
 
-<div class="bloco"><div class="codigo">550-0515</div><div class="numero">48</div></div>
-<div class="bloco"><div class="codigo">550-0518</div><div class="numero">43</div></div>
-<div class="bloco"><div class="codigo">550-0582</div><div class="numero">38</div></div>
-
-</div>
-
-<div class="coluna">
-
-<div class="bloco grande">
-<div class="codigo">1808199</div>
-<div class="numero">58</div>
-</div>
-
-<div class="bloco"><div class="codigo">550-0602</div><div class="numero">47</div></div>
-<div class="bloco"><div class="codigo">550-0515</div><div class="numero">42</div></div>
-<div class="bloco"><div class="codigo">550-0251R</div><div class="numero">37</div></div>
-
-</div>
-
-<div class="coluna">
-
-<div class="bloco grande">
-<div class="codigo">1808205</div>
-<div class="numero">59</div>
-</div>
-
-<div class="bloco grande">
-<div class="codigo">1808200</div>
-<div class="numero">60</div>
-</div>
-
-</div>
-
-</div>
-
-<div class="centro">
-<h2>60 GRUPOS GERADORES</h2>
+<h2>
+60 GRUPOS GERADORES
+</h2>
 
 <p>360 = 1 GG</p>
 <p>550 = 50 GG</p>
@@ -235,69 +293,87 @@ Oliveira Energia
 
 </div>
 
-<!-- INFERIOR -->
 
-<div class="inferior">
-
-<div class="coluna-inferior">
-
-<div class="bloco"><div class="codigo">550-0589</div><div class="numero">04</div></div>
-<div class="bloco"><div class="codigo">550-0590</div><div class="numero">08</div></div>
-<div class="bloco"><div class="codigo">550-0598</div><div class="numero">12</div></div>
-<div class="bloco"><div class="codigo">550-0471</div><div class="numero">16</div></div>
-<div class="bloco"><div class="codigo">550-0599</div><div class="numero">20</div></div>
-<div class="bloco"><div class="codigo">550-0600</div><div class="numero">24</div></div>
-<div class="bloco"><div class="codigo">550-0594</div><div class="numero">28</div></div>
-<div class="bloco"><div class="codigo">550-0344R</div><div class="numero">32</div></div>
-<div class="bloco"><div class="codigo">550-0596</div><div class="numero">36</div></div>
 
 </div>
 
-<div class="coluna-inferior">
 
-<div class="bloco"><div class="codigo">550-0562</div><div class="numero">03</div></div>
-<div class="bloco"><div class="codigo">550-0142</div><div class="numero">07</div></div>
-<div class="bloco"><div class="codigo">550-0591</div><div class="numero">11</div></div>
-<div class="bloco"><div class="codigo">550-0476</div><div class="numero">15</div></div>
-<div class="bloco"><div class="codigo">550-0592</div><div class="numero">19</div></div>
-<div class="bloco"><div class="codigo">550-0581</div><div class="numero">23</div></div>
-<div class="bloco"><div class="codigo">550-0366</div><div class="numero">27</div></div>
-<div class="bloco"><div class="codigo">550-0367</div><div class="numero">31</div></div>
-<div class="bloco"><div class="codigo">550-0563</div><div class="numero">35</div></div>
+
+<script>
+
+
+const geradores=[
+
+
+["550-0583","54"],
+["550-0715","53"],
+["550-0038R","52"],
+["625-0017","51"],
+["550-0321R","46"],
+
+["1808201","55"],
+["1808203","56"],
+["1808198","57"],
+["1808199","58"],
+["1808205","59"],
+["1808200","60"],
+
+
+["550-0589","04"],
+["550-0590","08"],
+["550-0598","12"],
+["550-0471","16"],
+["550-0599","20"],
+
+["550-0562","03"],
+["550-0142","07"],
+["550-0591","11"],
+["550-0476","15"],
+
+
+["550-0028R","02"],
+["550-0597","06"],
+["550-0176","10"],
+
+
+["550-0024R","01"],
+["550-0184","05"],
+["550-0565","09"]
+
+
+];
+
+
+
+const painel=document.querySelector("#geradores");
+
+
+geradores.forEach(g=>{
+
+
+painel.innerHTML += `
+
+<div class="gerador">
+
+<div class="codigo">
+${g[0]}
+</div>
+
+<div class="numero">
+${g[1]}
+</div>
 
 </div>
 
-<div class="coluna-inferior">
+`;
 
-<div class="bloco"><div class="codigo">550-0028R</div><div class="numero">02</div></div>
-<div class="bloco"><div class="codigo">550-0597</div><div class="numero">06</div></div>
-<div class="bloco"><div class="codigo">550-0176</div><div class="numero">10</div></div>
-<div class="bloco"><div class="codigo">550-0027R</div><div class="numero">14</div></div>
-<div class="bloco"><div class="codigo">550-0305</div><div class="numero">18</div></div>
-<div class="bloco"><div class="codigo">550-05125R</div><div class="numero">22</div></div>
-<div class="bloco"><div class="codigo">360-0015</div><div class="numero">26</div></div>
-<div class="bloco"><div class="codigo">550-0302R</div><div class="numero">30</div></div>
-<div class="bloco"><div class="codigo">550-0209R</div><div class="numero">34</div></div>
 
-</div>
+});
 
-<div class="coluna-inferior">
 
-<div class="bloco"><div class="codigo">550-0024R</div><div class="numero">01</div></div>
-<div class="bloco"><div class="codigo">550-0184</div><div class="numero">05</div></div>
-<div class="bloco"><div class="codigo">550-0565</div><div class="numero">09</div></div>
-<div class="bloco"><div class="codigo">550-0566</div><div class="numero">13</div></div>
-<div class="bloco"><div class="codigo">550-0601</div><div class="numero">17</div></div>
-<div class="bloco"><div class="codigo">550-0593</div><div class="numero">21</div></div>
-<div class="bloco"><div class="codigo">550-0302R1</div><div class="numero">25</div></div>
-<div class="bloco"><div class="codigo">550-0241R</div><div class="numero">29</div></div>
-<div class="bloco"><div class="codigo">550-0482</div><div class="numero">33</div></div>
+</script>
 
-</div>
-
-</div>
-
-</div>
 
 </body>
+
 </html>
