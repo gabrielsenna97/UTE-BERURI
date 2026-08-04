@@ -5,15 +5,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Grupo Geradores UTE Maués</title>
+<title>Gestão de Ocorrências - UTE Maués</title>
 
 <style>
 
 :root{
-    --preto:#111111;
+    --preto:#111;
     --verde:#00843D;
     --amarelo:#FFD100;
-    --cinza:#eeeeee;
+    --vermelho:#d00000;
 }
 
 
@@ -27,15 +27,11 @@
 
 body{
 
-    background:
-    linear-gradient(135deg,#222,#555);
+    background:linear-gradient(135deg,#222,#555);
 
     padding:20px;
 
-    overflow-x:auto;
-
 }
-
 
 
 .container{
@@ -44,7 +40,7 @@ body{
 
     margin:auto;
 
-    background:#fff;
+    background:white;
 
     padding:30px;
 
@@ -63,22 +59,20 @@ body{
     background:
     linear-gradient(
     90deg,
-    var(--preto),
-    var(--verde),
-    var(--amarelo)
+    #111,
+    #00843D,
+    #FFD100
     );
 
     color:white;
 
     text-align:center;
 
-    padding:8px;
+    padding:10px;
 
     font-weight:bold;
 
     border-radius:5px;
-
-    margin-bottom:20px;
 
 }
 
@@ -92,9 +86,9 @@ body{
 
     justify-content:space-between;
 
-    border-bottom:5px solid var(--amarelo);
+    padding:20px 0;
 
-    padding-bottom:20px;
+    border-bottom:5px solid var(--amarelo);
 
     margin-bottom:25px;
 
@@ -104,14 +98,13 @@ body{
 
 .logo{
 
-    font-size:32px;
+    font-size:30px;
 
     font-weight:900;
 
     color:var(--verde);
 
 }
-
 
 
 .logo small{
@@ -128,11 +121,9 @@ body{
 
 h1{
 
-    flex:1;
-
     text-align:center;
 
-    color:var(--preto);
+    flex:1;
 
 }
 
@@ -179,20 +170,34 @@ h1{
 
     height:75px;
 
-    border:3px solid var(--preto);
+    border:3px solid #111;
 
     border-radius:8px;
 
     background:
-    linear-gradient(145deg,#fff,#e5e5e5);
+    linear-gradient(145deg,#fff,#ddd);
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
 
+    justify-content:center;
+
     flex-direction:column;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+
+.bloco:hover{
+
+    transform:scale(1.05);
+
+    background:#fff4b8;
 
 }
 
@@ -208,12 +213,11 @@ h1{
 
 .codigo{
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:bold;
 
 }
-
 
 
 .numero{
@@ -247,6 +251,7 @@ h1{
 }
 
 
+
 .centro h2{
 
     color:var(--verde);
@@ -254,33 +259,140 @@ h1{
 }
 
 
-.centro p{
+/* MODAL */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#0008;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+
+
+.caixa-modal{
+
+    width:450px;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    border:4px solid var(--verde);
+
+}
+
+
+
+.caixa-modal h2{
+
+    text-align:center;
+
+    color:var(--verde);
+
+    margin-bottom:20px;
+
+}
+
+
+
+.botao{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
 
     font-weight:bold;
 
-    margin:8px;
+    cursor:pointer;
 
 }
 
 
 
-@media(max-width:600px){
+.registrar{
 
-    .container{
+    background:var(--verde);
 
-        transform:scale(.75);
-
-        transform-origin:top left;
-
-        margin-bottom:-250px;
-
-    }
+    color:white;
 
 }
+
+
+
+.historico{
+
+    background:#333;
+
+    color:white;
+
+}
+
+
+input, textarea{
+
+    width:100%;
+
+    padding:10px;
+
+    margin-top:8px;
+
+    border:2px solid #aaa;
+
+    border-radius:8px;
+
+}
+
+
+textarea{
+
+    height:120px;
+
+}
+
+
+
+.fechar{
+
+    background:#d00000;
+
+    color:white;
+
+}
+
+
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -295,6 +407,7 @@ OLIVEIRA ENERGIA - UTE MAUÉS
 
 <div class="topo">
 
+
 <div class="logo">
 Oliveira Energia
 <small>Desde 1972</small>
@@ -302,9 +415,10 @@ Oliveira Energia
 
 
 <h1>
-GRUPO GERADORES<br>
-UTE MAUÉS
+GESTÃO DE OCORRÊNCIAS<br>
+GRUPOS GERADORES
 </h1>
+
 
 </div>
 
@@ -316,31 +430,51 @@ UTE MAUÉS
 
 <h2>60 GRUPOS GERADORES</h2>
 
-<p>360 = 1 GG</p>
-<p>550 = 50 GG</p>
-<p>625 = 3 GG</p>
-<p>KTA = 6 KUMMIS</p>
+<p>Registro e histórico de ocorrências</p>
 
 </div>
 
 
 <div id="inferior" class="inferior"></div>
 
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+
+<div class="caixa-modal" id="conteudoModal">
+
 
 </div>
 
 
-<script>
+</div> <script>
+
+// ===============================
+// MAPA DOS GRUPOS GERADORES
+// ===============================
+
 
 function bloco(c,n,g=false){
 
 return `
-<div class="bloco ${g?'grande':''}">
+<div class="bloco ${g?'grande':''}" onclick="abrirUGD('${n}')">
+
 <div class="codigo">${c}</div>
+
 <div class="numero">${n}</div>
-</div>`;
+
+</div>
+`;
+
 }
 
+
+
+// GRUPOS SUPERIORES
 
 const superior=[
 
@@ -389,6 +523,7 @@ const superior=[
 ];
 
 
+
 superior.forEach(col=>{
 
 let h="<div class='coluna'>";
@@ -404,6 +539,14 @@ h+="</div>";
 document.querySelector("#superior").innerHTML+=h;
 
 });
+
+
+
+
+
+// GRUPOS INFERIORES
+
+
 const inferior=[
 
 [
@@ -418,6 +561,7 @@ const inferior=[
 ["550-0596","36"]
 ],
 
+
 [
 ["550-0562","03"],
 ["550-0142","07"],
@@ -430,6 +574,7 @@ const inferior=[
 ["550-0563","35"]
 ],
 
+
 [
 ["550-0028R","02"],
 ["550-0597","06"],
@@ -441,6 +586,7 @@ const inferior=[
 ["550-0302R","30"],
 ["550-0209R","34"]
 ],
+
 
 [
 ["550-0024R","01"],
@@ -457,25 +603,399 @@ const inferior=[
 ];
 
 
+
 inferior.forEach(col=>{
+
 
 let h="<div class='coluna-inferior'>";
 
+
 col.forEach(g=>{
+
 
 h+=bloco(g[0],g[1]);
 
+
 });
+
 
 h+="</div>";
 
+
 document.querySelector("#inferior").innerHTML+=h;
 
+
 });
+
+
+
+
+
+// ===============================
+// ABRIR MENU DA UGD
+// ===============================
+
+
+let ugdSelecionada="";
+
+
+
+function abrirUGD(numero){
+
+
+ugdSelecionada=numero;
+
+
+
+document.getElementById("modal").style.display="flex";
+
+
+
+document.getElementById("conteudoModal").innerHTML=`
+
+<h2>
+UGD-${numero}
+</h2>
+
+
+<button class="botao registrar"
+onclick="registrarOcorrencia()">
+
+📝 Registrar Ocorrência
+
+</button>
+
+
+
+<button class="botao historico"
+onclick="verHistorico()">
+
+📋 Ver Histórico
+
+</button>
+
+
+
+<button class="botao fechar"
+onclick="fecharModal()">
+
+Fechar
+
+</button>
+
+`;
+
+}
+
+
+
+function fecharModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+
+
+function registrarOcorrencia(){
+
+
+let data=new Date()
+.toLocaleDateString("pt-BR");
+
+
+
+document.getElementById("conteudoModal").innerHTML=`
+
+<h2>
+Nova Ocorrência<br>
+UGD-${ugdSelecionada}
+</h2>
+
+
+<label>
+Data
+</label>
+
+
+<input id="data"
+value="${data}">
+
+
+
+<label>
+Colaborador
+</label>
+
+
+<input id="nome"
+placeholder="Digite seu nome">
+
+
+
+<label>
+Descrição da ocorrência
+</label>
+
+
+<textarea id="descricao"
+placeholder="Digite a ocorrência encontrada">
+</textarea>
+
+
+
+<button class="botao registrar"
+onclick="salvarOcorrencia()">
+
+Salvar Ocorrência
+
+</button>
+
+
+
+<button class="botao fechar"
+onclick="fecharModal()">
+
+Cancelar
+
+</button>
+
+
+`;
+
+}
+
+<script>
+
+// ===============================
+// BANCO LOCAL DE OCORRÊNCIAS
+// ===============================
+
+
+let ocorrencias = JSON.parse(
+localStorage.getItem("ocorrencias_ugd")
+) || [];
+
+
+
+
+
+// ===============================
+// SALVAR OCORRÊNCIA
+// ===============================
+
+
+function salvarOcorrencia(){
+
+
+let data=document.getElementById("data").value;
+
+let nome=document.getElementById("nome").value;
+
+let descricao=document.getElementById("descricao").value;
+
+
+
+if(nome=="" || descricao==""){
+
+alert("Preencha o nome e a descrição da ocorrência");
+
+return;
+
+}
+
+
+
+
+let registro={
+
+ugd:ugdSelecionada,
+
+data:data,
+
+nome:nome,
+
+descricao:descricao
+
+};
+
+
+
+ocorrencias.push(registro);
+
+
+
+localStorage.setItem(
+
+"ocorrencias_ugd",
+
+JSON.stringify(ocorrencias)
+
+);
+
+
+
+
+alert("Ocorrência registrada com sucesso!");
+
+
+
+fecharModal();
+
+
+
+}
+
+
+
+
+
+// ===============================
+// MOSTRAR HISTÓRICO
+// ===============================
+
+
+function verHistorico(){
+
+
+let lista=ocorrencias.filter(
+
+item=>item.ugd==ugdSelecionada
+
+);
+
+
+
+let html=`
+
+
+<h2>
+
+Histórico UGD-${ugdSelecionada}
+
+</h2>
+
+`;
+
+
+
+
+
+if(lista.length==0){
+
+
+html+=`
+
+<p>
+Nenhuma ocorrência registrada.
+</p>
+
+`;
+
+
+
+}
+
+else{
+
+
+lista.reverse().forEach(item=>{
+
+
+html+=`
+
+<div style="
+border:2px solid #ccc;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+">
+
+
+<b>Data:</b> ${item.data}
+
+<br>
+
+
+<b>Colaborador:</b> ${item.nome}
+
+<br><br>
+
+
+<b>Descrição:</b>
+
+<br>
+
+${item.descricao}
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+
+
+html+=`
+
+<button class="botao fechar"
+onclick="fecharModal()">
+
+Fechar
+
+</button>
+
+`;
+
+
+
+
+document.getElementById("conteudoModal").innerHTML=html;
+
+
+
+}
+
+
+
+
+
+// ===============================
+// FECHAR CLICANDO FORA
+// ===============================
+
+
+window.onclick=function(event){
+
+
+let modal=document.getElementById("modal");
+
+
+if(event.target==modal){
+
+
+modal.style.display="none";
+
+
+}
+
+
+}
+
 
 
 </script>
 
 
 </body>
+
 </html>
