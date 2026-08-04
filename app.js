@@ -1,95 +1,213 @@
-let ugdAtual = 0;
+// ===============================
+// UTE MAUÉS - Gestão de Ocorrências
+// app.js
+// ===============================
 
-const banco =
-JSON.parse(localStorage.getItem("anomalias")) || [];
+const mapa = document.getElementById("mapa");
+const modal = document.getElementById("modal");
+const tituloUGD = document.getElementById("tituloUGD");
 
-function abrir(numero){
+const campoData = document.getElementById("data");
+const campoColaborador = document.getElementById("colaborador");
+const campoOcorrencia = document.getElementById("ocorrencia");
+const historico = document.getElementById("historico");
 
-ugdAtual = numero;
+let ugdAtual = "";
 
-tituloUGD.innerText =
-"UGD " + numero;
+//======================
+// Cria as 60 UGD
+//======================
 
-modal.style.display = "flex";
+for(let i=1;i<=60;i++){
 
-}
+    const div = document.createElement("div");
 
-function fechar(){
-modal.style.display = "none";
-}
+    div.className="ugd operando";
 
-function salvar(){
+    div.innerHTML="UGD "+String(i).padStart(2,"0");
 
-const ocorrencia = {
+    div.onclick=()=>abrirModal(i);
 
-ugd:ugdAtual,
-os:os.value,
-titulo:titulo.value,
-descricao:descricao.value,
-categoria:categoria.value,
-prioridade:prioridade.value,
-status:status.value,
-responsavel:responsavel.value,
-data:new Date().toLocaleString("pt-BR")
-
-};
-
-banco.push(ocorrencia);
-
-localStorage.setItem(
-"anomalias",
-JSON.stringify(banco)
-);
-
-renderizar();
-
-fechar();
+    mapa.appendChild(div);
 
 }
 
-function renderizar(){
+//======================
+// Abrir Modal
+//======================
 
-historico.innerHTML = "";
+function abrirModal(numero){
 
-let abertas = 0;
-let andamento = 0;
-let concluidas = 0;
-let criticas = 0;
+    ugdAtual="UGD "+String(numero).padStart(2,"0");
 
-banco.forEach(item=>{
+    tituloUGD.innerHTML=ugdAtual;
 
-historico.innerHTML += `
-<tr>
-<td>${item.ugd}</td>
-<td>${item.os}</td>
-<td>${item.titulo}</td>
-<td>${item.status}</td>
-<td>${item.prioridade}</td>
-<td>${item.responsavel}</td>
-<td>${item.data}</td>
-</tr>
-`;
+    campoData.value=new Date().toISOString().substring(0,10);
 
-if(item.status==="Aberto") abertas++;
-if(item.status==="Em Andamento") andamento++;
-if(item.status==="Concluído") concluidas++;
-if(item.prioridade==="Crítica") criticas++;
+    campoColaborador.value="";
 
-});
+    campoOcorrencia.value="";
 
-total.innerText = banco.length;
-abertas.innerText = abertas;
-andamento.innerText = andamento;
-concluidas.innerText = concluidas;
-criticas.innerText = criticas;
+    carregarHistorico();
+
+    modal.style.display="flex";
 
 }
 
-setInterval(()=>{
+//======================
 
-hora.innerText =
-new Date().toLocaleString("pt-BR");
+function fecharModal(){
 
-},1000);
+    modal.style.display="none";
 
-renderizar();
+}
+
+//======================
+// Salvar Registro
+//======================
+
+function salvarRegistro(){
+
+    if(campoColaborador.value==""){
+
+        alert("Informe o colaborador.");
+
+        return;
+
+    }
+
+    if(campoOcorrencia.value==""){
+
+        alert("Informe a ocorrência.");
+
+        return;
+
+    }
+
+    let banco=JSON.parse(localStorage.getItem("ocorrencias")) || {};
+
+    if(!banco[ugdAtual]){
+
+        banco[ugdAtual]=[];
+
+    }
+
+    banco[ugdAtual].push({
+
+        data:campoData.value,
+
+        colaborador:campoColaborador.value,
+
+        ocorrencia:campoOcorrencia.value
+
+    });
+
+    localStorage.setItem("ocorrencias",JSON.stringify(banco));
+
+    carregarHistorico();
+
+    campoOcorrencia.value="";
+
+}
+
+//======================
+// Histórico
+//======================
+
+function carregarHistorico(){
+
+    let banco=JSON.parse(localStorage.getItem("ocorrencias")) || {};
+
+    historico.innerHTML="";
+
+    if(!banco[ugdAtual] || banco[ugdAtual].length==0){
+
+        historico.innerHTML="<p>Nenhum registro.</p>";
+
+        return;
+
+    }
+
+    banco[ugdAtual].forEach((item,index)=>{
+
+        historico.innerHTML+=`
+
+        <div class="registro">
+
+        <strong>${item.data}</strong><br><br>
+
+        <b>${item.colaborador}</b>
+
+        <p>${item.ocorrencia}</p>
+
+        <button onclick="excluirRegistro(${index})">
+
+        Excluir
+
+        </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+//======================
+// Excluir Registro
+//======================
+
+function excluirRegistro(index){
+
+    if(!confirm("Excluir registro?")) return;
+
+    let banco=JSON.parse(localStorage.getItem("ocorrencias")) || {};
+
+    banco[ugdAtual].splice(index,1);
+
+    localStorage.setItem("ocorrencias",JSON.stringify(banco));
+
+    carregarHistorico();
+
+}
+
+//======================
+// Pesquisa
+//======================
+
+function pesquisarUGD(){
+
+    const texto=document.getElementById("pesquisa").value.toUpperCase();
+
+    const lista=document.querySelectorAll(".ugd");
+
+    lista.forEach(item=>{
+
+        if(item.innerHTML.toUpperCase().includes(texto)){
+
+            item.style.display="block";
+
+        }else{
+
+            item.style.display="none";
+
+        }
+
+    });
+
+}
+
+//======================
+// Fecha Modal clicando fora
+//======================
+
+window.onclick=function(event){
+
+    if(event.target==modal){
+
+        fecharModal();
+
+    }
+
+}
