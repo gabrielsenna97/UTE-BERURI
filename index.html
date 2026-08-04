@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,11 +10,12 @@
 <style>
 
 :root{
-    --preto:#111;
+    --preto:#111111;
     --verde:#00843D;
     --amarelo:#FFD100;
     --cinza:#eeeeee;
 }
+
 
 *{
     margin:0;
@@ -28,7 +30,9 @@ body{
     background:
     linear-gradient(135deg,#222,#555);
 
-    padding:25px;
+    padding:20px;
+
+    overflow-x:auto;
 
 }
 
@@ -36,17 +40,17 @@ body{
 
 .container{
 
-    max-width:1200px;
+    width:1200px;
 
     margin:auto;
 
-    background:white;
+    background:#fff;
 
     padding:30px;
 
-    border-radius:15px;
-
     border:4px solid var(--preto);
+
+    border-radius:15px;
 
     box-shadow:0 10px 30px #0008;
 
@@ -54,12 +58,9 @@ body{
 
 
 
-/* CABEÇALHO */
-
 .faixa{
 
     background:
-
     linear-gradient(
     90deg,
     var(--preto),
@@ -75,7 +76,7 @@ body{
 
     font-weight:bold;
 
-    border-radius:6px;
+    border-radius:5px;
 
     margin-bottom:20px;
 
@@ -103,13 +104,14 @@ body{
 
 .logo{
 
-    font-size:30px;
+    font-size:32px;
 
     font-weight:900;
 
     color:var(--verde);
 
 }
+
 
 
 .logo small{
@@ -130,15 +132,11 @@ h1{
 
     text-align:center;
 
-    font-size:30px;
-
     color:var(--preto);
 
 }
 
 
-
-/* MAPA */
 
 .grid-superior{
 
@@ -151,6 +149,7 @@ h1{
 }
 
 
+
 .inferior{
 
     display:grid;
@@ -160,6 +159,7 @@ h1{
     gap:40px;
 
 }
+
 
 
 .coluna,
@@ -175,45 +175,24 @@ h1{
 
 
 
-/* GERADORES */
-
 .bloco{
 
-    min-height:75px;
+    height:75px;
 
     border:3px solid var(--preto);
 
     border-radius:8px;
 
     background:
-
-    linear-gradient(
-    145deg,
-    #fff,
-    var(--cinza)
-    );
+    linear-gradient(145deg,#fff,#e5e5e5);
 
     display:flex;
-
-    flex-direction:column;
 
     justify-content:center;
 
     align-items:center;
 
-    transition:.2s;
-
-}
-
-
-
-.bloco:hover{
-
-    border-color:var(--verde);
-
-    box-shadow:0 0 15px var(--verde);
-
-    transform:scale(1.03);
+    flex-direction:column;
 
 }
 
@@ -233,8 +212,6 @@ h1{
 
     font-weight:bold;
 
-    color:#444;
-
 }
 
 
@@ -249,9 +226,6 @@ h1{
 
 }
 
-
-
-/* CENTRO */
 
 
 .centro{
@@ -277,8 +251,6 @@ h1{
 
     color:var(--verde);
 
-    margin-bottom:15px;
-
 }
 
 
@@ -292,64 +264,23 @@ h1{
 
 
 
-/* MOBILE */
+@media(max-width:600px){
 
-@media(max-width:900px){
+    .container{
 
-.grid-superior{
+        transform:scale(.75);
 
-grid-template-columns:repeat(2,1fr);
+        transform-origin:top left;
 
-}
+        margin-bottom:-250px;
 
-
-.inferior{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-
-.centro{
-
-width:100%;
-
-}
-
-}
-
-
-@media(max-width:500px){
-
-.grid-superior,
-.inferior{
-
-grid-template-columns:1fr;
-
-}
-
-
-.topo{
-
-flex-direction:column;
-
-gap:15px;
-
-}
-
-
-h1{
-
-font-size:22px;
-
-}
+    }
 
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -358,19 +289,15 @@ font-size:22px;
 
 
 <div class="faixa">
-OLIVEIRA ENERGIA - SISTEMA DE GERAÇÃO UTE MAUÉS
+OLIVEIRA ENERGIA - UTE MAUÉS
 </div>
-
 
 
 <div class="topo">
 
 <div class="logo">
-
 Oliveira Energia
-
 <small>Desde 1972</small>
-
 </div>
 
 
@@ -379,13 +306,10 @@ GRUPO GERADORES<br>
 UTE MAUÉS
 </h1>
 
-
 </div>
 
 
-
-<div class="grid-superior" id="superior"></div>
-
+<div id="superior" class="grid-superior"></div>
 
 
 <div class="centro">
@@ -400,40 +324,25 @@ UTE MAUÉS
 </div>
 
 
-
-<div class="inferior" id="inferior"></div>
+<div id="inferior" class="inferior"></div>
 
 
 </div>
-
 
 
 <script>
 
-
-function criar(c,n,g=false){
+function bloco(c,n,g=false){
 
 return `
-
 <div class="bloco ${g?'grande':''}">
-
 <div class="codigo">${c}</div>
-
 <div class="numero">${n}</div>
-
-</div>
-
-`;
-
+</div>`;
 }
 
 
-
-/* POSIÇÃO ORIGINAL SUPERIOR */
-
-
-let superior=[
-
+const superior=[
 
 [
 ["550-0583","54"],
@@ -444,14 +353,12 @@ let superior=[
 ["550-0517","41"]
 ],
 
-
 [
 ["1808201","55",1],
 ["550-0297R","50"],
 ["550-0104R","45"],
 ["625-0038","40"]
 ],
-
 
 [
 ["1808203","56",1],
@@ -460,7 +367,6 @@ let superior=[
 ["550-0025R","39"]
 ],
 
-
 [
 ["1808198","57",1],
 ["550-0515","48"],
@@ -468,14 +374,12 @@ let superior=[
 ["550-0582","38"]
 ],
 
-
 [
 ["1808199","58",1],
 ["550-0602","47"],
 ["550-0515","42"],
 ["550-0251R","37"]
 ],
-
 
 [
 ["1808205","59",1],
@@ -485,31 +389,22 @@ let superior=[
 ];
 
 
-
 superior.forEach(col=>{
 
-let html="<div class='coluna'>";
+let h="<div class='coluna'>";
 
-col.forEach(x=>{
+col.forEach(g=>{
 
-html+=criar(x[0],x[1],x[2]);
-
-});
-
-html+="</div>";
-
-document.querySelector("#superior").innerHTML+=html;
+h+=bloco(g[0],g[1],g[2]);
 
 });
 
+h+="</div>";
 
+document.querySelector("#superior").innerHTML+=h;
 
-
-/* POSIÇÃO ORIGINAL INFERIOR */
-
-
-let inferior=[
-
+});
+const inferior=[
 
 [
 ["550-0589","04"],
@@ -523,7 +418,6 @@ let inferior=[
 ["550-0596","36"]
 ],
 
-
 [
 ["550-0562","03"],
 ["550-0142","07"],
@@ -536,7 +430,6 @@ let inferior=[
 ["550-0563","35"]
 ],
 
-
 [
 ["550-0028R","02"],
 ["550-0597","06"],
@@ -548,7 +441,6 @@ let inferior=[
 ["550-0302R","30"],
 ["550-0209R","34"]
 ],
-
 
 [
 ["550-0024R","01"],
@@ -565,20 +457,19 @@ let inferior=[
 ];
 
 
-
 inferior.forEach(col=>{
 
-let html="<div class='coluna-inferior'>";
+let h="<div class='coluna-inferior'>";
 
-col.forEach(x=>{
+col.forEach(g=>{
 
-html+=criar(x[0],x[1]);
+h+=bloco(g[0],g[1]);
 
 });
 
-html+="</div>";
+h+="</div>";
 
-document.querySelector("#inferior").innerHTML+=html;
+document.querySelector("#inferior").innerHTML+=h;
 
 });
 
