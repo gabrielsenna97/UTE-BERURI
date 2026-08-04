@@ -190,6 +190,23 @@ h1{
 }
 
 
+/* NOVO - CONTADOR DE OCORRÊNCIAS */
+
+.contador{
+
+    height:20px;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    color:#d00000;
+
+    text-align:center;
+
+}
+
+
 
 .codigo{
 
@@ -242,12 +259,7 @@ h1{
     font-weight:bold;
     margin:8px;
 
-}
-
-
-
-
-/* MODAL */
+} /* MODAL */
 
 
 .modal{
@@ -458,11 +470,15 @@ UTE MAUÉS
 
 </div>
 
-</div> <script>
+</div>
+
+
+<script>
 
 
 // =====================================
 // CRIAÇÃO DOS BLOCOS DAS UGDs
+// COM CONTADOR
 // =====================================
 
 
@@ -473,13 +489,19 @@ return `
 <div class="bloco ${grande ? "grande":""}"
 onclick="abrirUGD('${numero}')">
 
+
+<div class="contador" id="cont-${numero}"></div>
+
+
 <div class="codigo">
 ${codigo}
 </div>
 
+
 <div class="numero">
 ${numero}
 </div>
+
 
 </div>
 
@@ -569,12 +591,7 @@ document
 .innerHTML+=html;
 
 
-});
-
-
-
-
-// =====================================
+}); // =====================================
 // MAPA INFERIOR
 // =====================================
 
@@ -595,7 +612,6 @@ const inferior=[
 ],
 
 
-
 [
 ["550-0562","03"],
 ["550-0142","07"],
@@ -609,7 +625,6 @@ const inferior=[
 ],
 
 
-
 [
 ["550-0028R","02"],
 ["550-0597","06"],
@@ -621,7 +636,6 @@ const inferior=[
 ["550-0302R","30"],
 ["550-0209R","34"]
 ],
-
 
 
 [
@@ -672,12 +686,14 @@ document
 
 
 
+
 // =====================================
 // VARIÁVEL GLOBAL
 // =====================================
 
 
 let ugdSelecionada="";
+
 
 
 
@@ -689,6 +705,93 @@ let ugdSelecionada="";
 const API =
 
 "https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";
+
+
+
+
+
+// =====================================
+// CONTADOR DE OCORRÊNCIAS
+// =====================================
+
+
+function carregarContadores(){
+
+
+fetch(API)
+
+
+.then(res=>res.json())
+
+
+.then(lista=>{
+
+
+let contagem={};
+
+
+
+lista.forEach(item=>{
+
+
+let numero=item.ugd.replace("UGD-","");
+
+
+
+if(!contagem[numero]){
+
+contagem[numero]=0;
+
+}
+
+
+
+contagem[numero]++;
+
+
+});
+
+
+
+Object.keys(contagem).forEach(ugd=>{
+
+
+let campo=document.getElementById("cont-"+ugd);
+
+
+
+if(campo){
+
+
+campo.innerHTML=contagem[ugd];
+
+
+}
+
+
+});
+
+
+})
+
+
+.catch(erro=>{
+
+
+console.log("Erro contador:",erro);
+
+
+});
+
+
+}
+
+
+
+// executa contador ao abrir
+
+carregarContadores();
+
 
 
 
@@ -713,6 +816,7 @@ document
 document
 .getElementById("modalConteudo")
 .innerHTML=`
+
 
 <h2>
 UGD-${numero}
@@ -752,7 +856,6 @@ Fechar
 
 
 
-
 // =====================================
 // FORMULÁRIO DE REGISTRO
 // =====================================
@@ -770,6 +873,7 @@ new Date()
 document
 .getElementById("modalConteudo")
 .innerHTML=`
+
 
 <h2>
 Registrar Ocorrência
@@ -792,14 +896,17 @@ value="${hoje}">
 Colaborador
 </label>
 
+
 <input
 id="colaborador"
 placeholder="Nome do colaborador">
 
 
+
 <label>
 Descrição
 </label>
+
 
 <textarea
 id="descricao"
@@ -808,7 +915,9 @@ placeholder="Descrição da ocorrência">
 
 
 
+
 <button class="botao registrar"
+
 onclick="salvarOcorrencia()">
 
 💾 Salvar
@@ -817,7 +926,9 @@ onclick="salvarOcorrencia()">
 
 
 
+
 <button class="botao fechar"
+
 onclick="fecharModal()">
 
 Cancelar
@@ -825,47 +936,23 @@ Cancelar
 </button>
 
 
+
 `;
 
 
 }
- 
+
+
+
+
+
 
 // =====================================
-// SALVAR OCORRÊNCIA NO GOOGLE SHEETS
+// SALVAR OCORRÊNCIA
 // =====================================
 
 
 function salvarOcorrencia(){
-
-
-let data =
-document.getElementById("data").value;
-
-
-let colaborador =
-document.getElementById("colaborador").value;
-
-
-let descricao =
-document.getElementById("descricao").value;
-
-
-
-if(
-colaborador==="" ||
-descricao===""
-){
-
-
-alert("Preencha todos os campos!");
-
-return;
-
-
-}
-
-
 
 
 let dados={
@@ -873,15 +960,14 @@ let dados={
 
 ugd:"UGD-"+ugdSelecionada,
 
-data:data,
+data:document.getElementById("data").value,
 
-colaborador:colaborador,
+colaborador:document.getElementById("colaborador").value,
 
-descricao:descricao
+descricao:document.getElementById("descricao").value
 
 
 };
-
 
 
 
@@ -894,26 +980,22 @@ body:JSON.stringify(dados)
 })
 
 
-.then(res=>res.json())
-
-
-.then(retorno=>{
+.then(()=>{
 
 
 alert("Ocorrência registrada com sucesso!");
 
-fecharModal();
+
+location.reload();
 
 
 })
 
 
-.catch(erro=>{
+.catch(()=>{
 
 
-alert("Erro ao salvar ocorrência!");
-
-console.log(erro);
+alert("Erro ao salvar ocorrência");
 
 
 });
@@ -924,43 +1006,37 @@ console.log(erro);
 
 
 
+
+
 // =====================================
-// CONSULTAR HISTÓRICO DA UGD
+// HISTÓRICO
 // =====================================
 
 
 function verHistorico(){
 
 
-
-document
-.getElementById("modalConteudo")
-.innerHTML=`
+document.getElementById("modalConteudo").innerHTML=`
 
 <h2>
 Histórico UGD-${ugdSelecionada}
 </h2>
 
 <p>
-Carregando registros...
+Carregando...
 </p>
 
 `;
 
 
 
-fetch(
-API+"?ugd=UGD-"+ugdSelecionada
-)
-
+fetch(API+"?ugd=UGD-"+ugdSelecionada)
 
 
 .then(res=>res.json())
 
 
-
 .then(lista=>{
-
 
 
 let tela=`
@@ -975,42 +1051,16 @@ Histórico UGD-${ugdSelecionada}
 
 
 
-if(lista.length===0){
+lista.reverse().forEach(item=>{
 
 
 tela+=`
-
-<p>
-Nenhuma ocorrência registrada.
-</p>
-
-`;
-
-
-
-}
-
-else{
-
-
-
-lista.reverse()
-.forEach(item=>{
-
-
-tela+=`
-
 
 <div style="
-
 border:2px solid #ccc;
-
 border-radius:8px;
-
 padding:12px;
-
 margin-top:10px;
-
 ">
 
 
@@ -1018,13 +1068,12 @@ margin-top:10px;
 
 <br>
 
-
-<b>Data:</b> ${new Date(item.data).toLocaleDateString("pt-BR")}
+<b>Data:</b> ${item.data}
 
 <br>
 
-
 <b>Colaborador:</b> ${item.colaborador}
+
 
 <br><br>
 
@@ -1032,32 +1081,22 @@ margin-top:10px;
 <b>Descrição:</b>
 
 <p>
-
 ${item.descricao}
-
 </p>
 
 
 </div>
 
 
-
 `;
 
 
-
 });
-
-
-
-}
-
 
 
 
 tela+=`
 
-
 <button class="botao fechar"
 
 onclick="fecharModal()">
@@ -1071,51 +1110,15 @@ Fechar
 
 
 
-document
-.getElementById("modalConteudo")
-.innerHTML=tela;
-
-
-
-})
-
-
-
-.catch(erro=>{
-
-
-document
-.getElementById("modalConteudo")
-.innerHTML=`
-
-<h2>
-Erro
-</h2>
-
-
-<p>
-Não foi possível consultar histórico.
-</p>
-
-
-<button class="botao fechar"
-
-onclick="fecharModal()">
-
-Fechar
-
-</button>
-
-`;
-
-console.log(erro);
+document.getElementById("modalConteudo").innerHTML=tela;
 
 
 });
 
 
-
 }
+
+
 
 
 
@@ -1140,15 +1143,10 @@ document
 
 
 
-// fechar clicando fora
-
-
 window.onclick=function(event){
 
 
-let modal =
-document.getElementById("modal");
-
+let modal=document.getElementById("modal");
 
 
 if(event.target===modal){
