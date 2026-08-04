@@ -1,159 +1,303 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo Geradores UTE Maués</title>
 
-<title>UTE Maués - Supervisório 3D</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-<link rel="stylesheet" href="style.css">
+body{
+    background:#ddd;
+    padding:30px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border:2px solid #000;
+}
+
+.topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.logo small{
+    display:block;
+    font-size:12px;
+    font-weight:normal;
+}
+
+h1{
+    text-align:center;
+    flex:1;
+    font-size:32px;
+}
+
+.grid-superior{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.coluna{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.grande{
+    height:180px;
+}
+
+.bloco{
+    border:2px solid #000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:70px;
+}
+
+.codigo{
+    font-size:13px;
+}
+
+.numero{
+    font-size:36px;
+    font-weight:bold;
+}
+
+.centro{
+    border:2px solid #000;
+    text-align:center;
+    padding:20px;
+    margin:20px auto;
+    width:450px;
+}
+
+.centro h2{
+    margin-bottom:15px;
+}
+
+.inferior{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+}
+
+.coluna-inferior{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+@media(max-width:900px){
+
+.grid-superior{
+grid-template-columns:repeat(2,1fr);
+}
+
+.inferior{
+grid-template-columns:repeat(2,1fr);
+}
+
+.centro{
+width:100%;
+}
+
+}
+</style>
 
 </head>
-
 <body>
 
+<div class="container">
 
-<div class="painel">
-
-
-<header>
-
+<div class="topo">
 <div class="logo">
-OLIVEIRA ENERGIA
-<span>Desde 1972</span>
+Oliveira Energia
+<small>Desde 1972</small>
 </div>
 
+<h1>GRUPO GERADORES UTE MAUÉS</h1>
 
-<div class="titulo">
-
-GRUPO GERADORES
-<br>
-<span>UTE MAUÉS</span>
-
+<div style="width:180px"></div>
 </div>
 
+<!-- SUPERIOR -->
 
-<div class="status">
+<div class="grid-superior">
 
-<div class="led"></div>
+<div class="coluna">
 
-SISTEMA ONLINE
-
-</div>
-
-
-</header>
-
-
-
-<section class="resumo">
-
-
-<div class="card-info">
-
-<h3>TOTAL</h3>
-
-<strong>60</strong>
-
-<p>GERADORES</p>
+<div class="bloco"><div class="codigo">550-0583</div><div class="numero">54</div></div>
+<div class="bloco"><div class="codigo">550-0715</div><div class="numero">53</div></div>
+<div class="bloco"><div class="codigo">550-0038R</div><div class="numero">52</div></div>
+<div class="bloco"><div class="codigo">625-0017</div><div class="numero">51</div></div>
+<div class="bloco"><div class="codigo">550-0321R</div><div class="numero">46</div></div>
+<div class="bloco"><div class="codigo">550-0517</div><div class="numero">41</div></div>
 
 </div>
 
+<div class="coluna">
 
+<div class="bloco grande">
+<div class="codigo">1808201</div>
+<div class="numero">55</div>
+</div>
 
-<div class="card-info verde">
-
-<h3>OPERANDO</h3>
-
-<strong id="online">
-58
-</strong>
-
-<p>ONLINE</p>
+<div class="bloco"><div class="codigo">550-0297R</div><div class="numero">50</div></div>
+<div class="bloco"><div class="codigo">550-0104R</div><div class="numero">45</div></div>
+<div class="bloco"><div class="codigo">625-0038</div><div class="numero">40</div></div>
 
 </div>
 
+<div class="coluna">
 
+<div class="bloco grande">
+<div class="codigo">1808203</div>
+<div class="numero">56</div>
+</div>
 
-<div class="card-info amarelo">
-
-<h3>ATENÇÃO</h3>
-
-<strong id="alarme">
-01
-</strong>
-
-<p>ALARME</p>
+<div class="bloco"><div class="codigo">625-0019</div><div class="numero">49</div></div>
+<div class="bloco"><div class="codigo">550-0609R</div><div class="numero">44</div></div>
+<div class="bloco"><div class="codigo">550-0025R</div><div class="numero">39</div></div>
 
 </div>
 
+<div class="coluna">
 
+<div class="bloco grande">
+<div class="codigo">1808198</div>
+<div class="numero">57</div>
+</div>
 
-<div class="card-info vermelho">
-
-<h3>PARADOS</h3>
-
-<strong id="parados">
-01
-</strong>
-
-<p>OFFLINE</p>
+<div class="bloco"><div class="codigo">550-0515</div><div class="numero">48</div></div>
+<div class="bloco"><div class="codigo">550-0518</div><div class="numero">43</div></div>
+<div class="bloco"><div class="codigo">550-0582</div><div class="numero">38</div></div>
 
 </div>
 
+<div class="coluna">
 
-</section>
+<div class="bloco grande">
+<div class="codigo">1808199</div>
+<div class="numero">58</div>
+</div>
 
-
-
-
-
-<h2 class="titulo-area">
-
-PAINEL DE GRUPOS GERADORES
-
-</h2>
-
-
-
-
-<div id="geradores" class="grid-geradores">
-
+<div class="bloco"><div class="codigo">550-0602</div><div class="numero">47</div></div>
+<div class="bloco"><div class="codigo">550-0515</div><div class="numero">42</div></div>
+<div class="bloco"><div class="codigo">550-0251R</div><div class="numero">37</div></div>
 
 </div>
 
+<div class="coluna">
 
+<div class="bloco grande">
+<div class="codigo">1808205</div>
+<div class="numero">59</div>
+</div>
 
-
-
-<footer>
-
-
-<div>
-
-UTE MAUÉS
+<div class="bloco grande">
+<div class="codigo">1808200</div>
+<div class="numero">60</div>
+</div>
 
 </div>
 
+</div>
 
-<div>
+<div class="centro">
+<h2>60 GRUPOS GERADORES</h2>
 
-MONITORAMENTO EM TEMPO REAL
+<p>360 = 1 GG</p>
+<p>550 = 50 GG</p>
+<p>625 = 3 GG</p>
+<p>KTA = 6 KUMMIS</p>
 
 </div>
 
+<!-- INFERIOR -->
 
-</footer>
+<div class="inferior">
 
+<div class="coluna-inferior">
 
+<div class="bloco"><div class="codigo">550-0589</div><div class="numero">04</div></div>
+<div class="bloco"><div class="codigo">550-0590</div><div class="numero">08</div></div>
+<div class="bloco"><div class="codigo">550-0598</div><div class="numero">12</div></div>
+<div class="bloco"><div class="codigo">550-0471</div><div class="numero">16</div></div>
+<div class="bloco"><div class="codigo">550-0599</div><div class="numero">20</div></div>
+<div class="bloco"><div class="codigo">550-0600</div><div class="numero">24</div></div>
+<div class="bloco"><div class="codigo">550-0594</div><div class="numero">28</div></div>
+<div class="bloco"><div class="codigo">550-0344R</div><div class="numero">32</div></div>
+<div class="bloco"><div class="codigo">550-0596</div><div class="numero">36</div></div>
 
 </div>
 
+<div class="coluna-inferior">
 
+<div class="bloco"><div class="codigo">550-0562</div><div class="numero">03</div></div>
+<div class="bloco"><div class="codigo">550-0142</div><div class="numero">07</div></div>
+<div class="bloco"><div class="codigo">550-0591</div><div class="numero">11</div></div>
+<div class="bloco"><div class="codigo">550-0476</div><div class="numero">15</div></div>
+<div class="bloco"><div class="codigo">550-0592</div><div class="numero">19</div></div>
+<div class="bloco"><div class="codigo">550-0581</div><div class="numero">23</div></div>
+<div class="bloco"><div class="codigo">550-0366</div><div class="numero">27</div></div>
+<div class="bloco"><div class="codigo">550-0367</div><div class="numero">31</div></div>
+<div class="bloco"><div class="codigo">550-0563</div><div class="numero">35</div></div>
 
-<script src="app.js"></script>
+</div>
+
+<div class="coluna-inferior">
+
+<div class="bloco"><div class="codigo">550-0028R</div><div class="numero">02</div></div>
+<div class="bloco"><div class="codigo">550-0597</div><div class="numero">06</div></div>
+<div class="bloco"><div class="codigo">550-0176</div><div class="numero">10</div></div>
+<div class="bloco"><div class="codigo">550-0027R</div><div class="numero">14</div></div>
+<div class="bloco"><div class="codigo">550-0305</div><div class="numero">18</div></div>
+<div class="bloco"><div class="codigo">550-05125R</div><div class="numero">22</div></div>
+<div class="bloco"><div class="codigo">360-0015</div><div class="numero">26</div></div>
+<div class="bloco"><div class="codigo">550-0302R</div><div class="numero">30</div></div>
+<div class="bloco"><div class="codigo">550-0209R</div><div class="numero">34</div></div>
+
+</div>
+
+<div class="coluna-inferior">
+
+<div class="bloco"><div class="codigo">550-0024R</div><div class="numero">01</div></div>
+<div class="bloco"><div class="codigo">550-0184</div><div class="numero">05</div></div>
+<div class="bloco"><div class="codigo">550-0565</div><div class="numero">09</div></div>
+<div class="bloco"><div class="codigo">550-0566</div><div class="numero">13</div></div>
+<div class="bloco"><div class="codigo">550-0601</div><div class="numero">17</div></div>
+<div class="bloco"><div class="codigo">550-0593</div><div class="numero">21</div></div>
+<div class="bloco"><div class="codigo">550-0302R1</div><div class="numero">25</div></div>
+<div class="bloco"><div class="codigo">550-0241R</div><div class="numero">29</div></div>
+<div class="bloco"><div class="codigo">550-0482</div><div class="numero">33</div></div>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
-
 </html>
