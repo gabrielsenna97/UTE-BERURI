@@ -929,32 +929,8 @@ console.log(erro);
 // =====================================
 
 
-// =====================================
-// FORMATAR DATA DO GOOGLE SHEETS
-// =====================================
+function verHistorico(){
 
-function formatarData(data){
-
-if(!data){
-return "";
-}
-
-
-let d = new Date(data);
-
-
-let dia = String(d.getDate()).padStart(2,"0");
-
-let mes = String(d.getMonth()+1).padStart(2,"0");
-
-let ano = d.getFullYear();
-
-
-
-return dia + "/" + mes + "/" + ano;
-
-
-}
 
 
 document
@@ -1044,6 +1020,7 @@ margin-top:10px;
 
 
 <b>Data:</b> ${formatarData(item.data)}
+
 <br>
 
 
