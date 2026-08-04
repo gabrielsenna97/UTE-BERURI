@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Grupo Geradores UTE Maués</title>
+<title>Gestão de Ocorrências - UTE Maués</title>
+
 
 <style>
 
 :root{
-    --preto:#111111;
+    --preto:#111;
     --verde:#00843D;
     --amarelo:#FFD100;
     --vermelho:#d00000;
@@ -27,11 +29,8 @@
 
 body{
 
-    background:
-    linear-gradient(135deg,#222,#555);
-
+    background:linear-gradient(135deg,#222,#555);
     padding:20px;
-
     overflow-x:auto;
 
 }
@@ -41,17 +40,11 @@ body{
 .container{
 
     width:1200px;
-
     margin:auto;
-
-    background:#fff;
-
+    background:white;
     padding:30px;
-
     border:4px solid var(--preto);
-
     border-radius:15px;
-
     box-shadow:0 10px 30px #0008;
 
 }
@@ -60,24 +53,18 @@ body{
 
 .faixa{
 
-    background:
-    linear-gradient(
-    90deg,
-    var(--preto),
-    var(--verde),
-    var(--amarelo)
+    background:linear-gradient(
+        90deg,
+        #111,
+        #00843D,
+        #FFD100
     );
 
     color:white;
-
     text-align:center;
-
-    padding:8px;
-
+    padding:10px;
     font-weight:bold;
-
     border-radius:5px;
-
     margin-bottom:20px;
 
 }
@@ -87,15 +74,10 @@ body{
 .topo{
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     border-bottom:5px solid var(--amarelo);
-
     padding-bottom:20px;
-
     margin-bottom:25px;
 
 }
@@ -105,9 +87,7 @@ body{
 .logo{
 
     font-size:32px;
-
     font-weight:900;
-
     color:var(--verde);
 
 }
@@ -117,9 +97,7 @@ body{
 .logo small{
 
     display:block;
-
     font-size:13px;
-
     color:#333;
 
 }
@@ -129,21 +107,19 @@ body{
 h1{
 
     flex:1;
-
     text-align:center;
-
-    color:var(--preto);
+    color:#111;
 
 }
 
 
 
+/* MAPA */
+
 .grid-superior{
 
     display:grid;
-
     grid-template-columns:repeat(6,1fr);
-
     gap:15px;
 
 }
@@ -153,9 +129,7 @@ h1{
 .inferior{
 
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:40px;
 
 }
@@ -166,9 +140,7 @@ h1{
 .coluna-inferior{
 
     display:flex;
-
     flex-direction:column;
-
     gap:12px;
 
 }
@@ -179,19 +151,19 @@ h1{
 
     height:75px;
 
-    border:3px solid var(--preto);
+    border:3px solid #111;
 
     border-radius:8px;
 
-    background:
-    linear-gradient(145deg,#fff,#e5e5e5);
+    background:linear-gradient(
+        145deg,
+        #fff,
+        #ddd
+    );
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     flex-direction:column;
 
     cursor:pointer;
@@ -201,10 +173,10 @@ h1{
 }
 
 
+
 .bloco:hover{
 
     transform:scale(1.05);
-
     background:#fff3b0;
 
 }
@@ -221,8 +193,7 @@ h1{
 
 .codigo{
 
-    font-size:13px;
-
+    font-size:12px;
     font-weight:bold;
 
 }
@@ -232,21 +203,20 @@ h1{
 .numero{
 
     font-size:38px;
-
     font-weight:900;
-
     color:var(--verde);
 
 }
 
 
 
+/* CENTRO */
+
+
 .centro{
 
     width:450px;
-
     margin:30px auto;
-
     padding:25px;
 
     text-align:center;
@@ -270,16 +240,14 @@ h1{
 .centro p{
 
     font-weight:bold;
-
     margin:8px;
 
 }
 
 
 
-/* ==========================
-   JANELA DE OCORRÊNCIA
-========================== */
+
+/* MODAL */
 
 
 .modal{
@@ -289,11 +257,9 @@ display:none;
 position:fixed;
 
 top:0;
-
 left:0;
 
 width:100%;
-
 height:100%;
 
 background:#0008;
@@ -303,6 +269,7 @@ justify-content:center;
 align-items:center;
 
 z-index:999;
+
 
 }
 
@@ -314,11 +281,16 @@ background:white;
 
 width:450px;
 
+max-height:90vh;
+
+overflow:auto;
+
 padding:25px;
 
 border-radius:15px;
 
 border:4px solid var(--verde);
+
 
 }
 
@@ -348,11 +320,11 @@ border:none;
 
 border-radius:8px;
 
+font-size:16px;
+
 font-weight:bold;
 
 cursor:pointer;
-
-font-size:16px;
 
 }
 
@@ -360,7 +332,7 @@ font-size:16px;
 
 .registrar{
 
-background:var(--verde);
+background:#00843D;
 
 color:white;
 
@@ -388,7 +360,8 @@ color:white;
 
 
 
-input,textarea{
+input,
+textarea{
 
 width:100%;
 
@@ -400,6 +373,7 @@ border:2px solid #aaa;
 
 border-radius:8px;
 
+
 }
 
 
@@ -409,7 +383,6 @@ textarea{
 height:120px;
 
 }
-
 
 
 </style>
@@ -424,22 +397,31 @@ height:120px;
 
 
 <div class="faixa">
+
 OLIVEIRA ENERGIA - UTE MAUÉS
+
 </div>
 
 
 <div class="topo">
 
+
 <div class="logo">
+
 Oliveira Energia
+
 <small>Desde 1972</small>
+
 </div>
 
 
 <h1>
+
 GRUPO GERADORES<br>
 UTE MAUÉS
+
 </h1>
+
 
 </div>
 
@@ -449,12 +431,16 @@ UTE MAUÉS
 
 <div class="centro">
 
-<h2>60 GRUPOS GERADORES</h2>
+<h2>
+60 GRUPOS GERADORES
+</h2>
+
 
 <p>360 = 1 GG</p>
 <p>550 = 50 GG</p>
 <p>625 = 3 GG</p>
 <p>KTA = 6 KUMMIS</p>
+
 
 </div>
 
@@ -465,30 +451,35 @@ UTE MAUÉS
 </div>
 
 
-<!-- MODAL -->
 
 <div class="modal" id="modal">
 
 <div class="modal-conteudo" id="modalConteudo">
 
 </div>
-   <script>
+
+</div> <script>
 
 
-// ===============================
-// CRIAÇÃO DOS BLOCOS
-// ===============================
+// =====================================
+// CRIAÇÃO DOS BLOCOS DAS UGDs
+// =====================================
 
 
-function bloco(c,n,g=false){
+function bloco(codigo,numero,grande=false){
 
 return `
 
-<div class="bloco ${g?'grande':''}" onclick="abrirUGD('${n}')">
+<div class="bloco ${grande ? "grande":""}"
+onclick="abrirUGD('${numero}')">
 
-<div class="codigo">${c}</div>
+<div class="codigo">
+${codigo}
+</div>
 
-<div class="numero">${n}</div>
+<div class="numero">
+${numero}
+</div>
 
 </div>
 
@@ -498,9 +489,9 @@ return `
 
 
 
-// ===============================
-// PARTE SUPERIOR
-// ===============================
+// =====================================
+// MAPA SUPERIOR
+// =====================================
 
 
 const superior=[
@@ -551,35 +542,41 @@ const superior=[
 
 
 
-superior.forEach(col=>{
+superior.forEach(coluna=>{
 
 
-let h="<div class='coluna'>";
+let html="<div class='coluna'>";
 
 
-col.forEach(g=>{
+coluna.forEach(item=>{
 
 
-h+=bloco(g[0],g[1],g[2]);
-
-
-});
-
-
-h+="</div>";
-
-
-document.querySelector("#superior").innerHTML+=h;
+html+=bloco(
+item[0],
+item[1],
+item[2]
+);
 
 
 });
 
 
+html+="</div>";
 
 
-// ===============================
-// PARTE INFERIOR
-// ===============================
+document
+.getElementById("superior")
+.innerHTML+=html;
+
+
+});
+
+
+
+
+// =====================================
+// MAPA INFERIOR
+// =====================================
 
 
 const inferior=[
@@ -644,45 +641,61 @@ const inferior=[
 
 
 
-
-inferior.forEach(col=>{
-
-
-let h="<div class='coluna-inferior'>";
+inferior.forEach(coluna=>{
 
 
-col.forEach(g=>{
+let html="<div class='coluna-inferior'>";
 
 
-h+=bloco(g[0],g[1]);
+coluna.forEach(item=>{
 
 
-});
-
-
-h+="</div>";
-
-
-document.querySelector("#inferior").innerHTML+=h;
+html+=bloco(
+item[0],
+item[1]
+);
 
 
 });
 
 
+html+="</div>";
 
 
-// ===============================
-// VARIÁVEL DA UGD SELECIONADA
-// ===============================
+document
+.getElementById("inferior")
+.innerHTML+=html;
+
+
+});
+
+
+
+
+// =====================================
+// VARIÁVEL GLOBAL
+// =====================================
 
 
 let ugdSelecionada="";
 
 
 
-// ===============================
+// =====================================
+// URL GOOGLE APPS SCRIPT
+// =====================================
+
+
+const API =
+
+"https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";
+
+
+
+
+// =====================================
 // ABRIR MENU DA UGD
-// ===============================
+// =====================================
 
 
 function abrirUGD(numero){
@@ -691,17 +704,19 @@ function abrirUGD(numero){
 ugdSelecionada=numero;
 
 
+document
+.getElementById("modal")
+.style.display="flex";
 
-document.getElementById("modal").style.display="flex";
 
 
-
-document.getElementById("modalConteudo").innerHTML=`
+document
+.getElementById("modalConteudo")
+.innerHTML=`
 
 <h2>
 UGD-${numero}
 </h2>
-
 
 
 <button class="botao registrar"
@@ -710,7 +725,6 @@ onclick="registrarOcorrencia()">
 📝 Registrar Ocorrência
 
 </button>
-
 
 
 <button class="botao historico"
@@ -732,46 +746,34 @@ Fechar
 
 `;
 
+
 }
 
 
 
-// ===============================
-// BANCO DE DADOS LOCAL
-// ===============================
-
-// ===============================
-// CONEXÃO GOOGLE SHEETS
-// ===============================
-
-const API =
-"https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";
 
 
-// mantém histórico local temporariamente
-let ocorrencias = [];
-
-
-
-
-// ===============================
+// =====================================
 // FORMULÁRIO DE REGISTRO
-// ===============================
+// =====================================
 
 
 function registrarOcorrencia(){
 
 
-let data = new Date()
+let hoje =
+new Date()
 .toLocaleDateString("pt-BR");
 
 
 
-document.getElementById("modalConteudo").innerHTML = `
-
+document
+.getElementById("modalConteudo")
+.innerHTML=`
 
 <h2>
-Registrar Ocorrência<br>
+Registrar Ocorrência
+<br>
 UGD-${ugdSelecionada}
 </h2>
 
@@ -781,10 +783,9 @@ UGD-${ugdSelecionada}
 Data
 </label>
 
-<input 
-id="dataOcorrencia"
-value="${data}">
-
+<input
+id="data"
+value="${hoje}">
 
 
 <label>
@@ -792,30 +793,27 @@ Colaborador
 </label>
 
 <input
-id="nomeColaborador"
-placeholder="Digite o nome">
-
+id="colaborador"
+placeholder="Nome do colaborador">
 
 
 <label>
-Descrição da ocorrência
+Descrição
 </label>
 
 <textarea
-id="descricaoOcorrencia"
-placeholder="Descreva a ocorrência encontrada">
+id="descricao"
+placeholder="Descrição da ocorrência">
 </textarea>
-
 
 
 
 <button class="botao registrar"
 onclick="salvarOcorrencia()">
 
-💾 Salvar Ocorrência
+💾 Salvar
 
 </button>
-
 
 
 
@@ -829,38 +827,38 @@ Cancelar
 
 `;
 
+
 }
+ 
 
-
-
-// ===============================
-// SALVAR REGISTRO
-// ===============================
+// =====================================
+// SALVAR OCORRÊNCIA NO GOOGLE SHEETS
+// =====================================
 
 
 function salvarOcorrencia(){
 
 
 let data =
-document.getElementById("dataOcorrencia").value;
+document.getElementById("data").value;
 
 
-
-let nome =
-document.getElementById("nomeColaborador").value;
-
+let colaborador =
+document.getElementById("colaborador").value;
 
 
 let descricao =
-document.getElementById("descricaoOcorrencia").value;
+document.getElementById("descricao").value;
 
 
 
-if(nome=="" || descricao==""){
+if(
+colaborador==="" ||
+descricao===""
+){
 
 
-alert("Preencha todos os campos");
-
+alert("Preencha todos os campos!");
 
 return;
 
@@ -870,14 +868,14 @@ return;
 
 
 
-let registro={
+let dados={
 
 
-ugd:ugdSelecionada,
+ugd:"UGD-"+ugdSelecionada,
 
 data:data,
 
-nome:nome,
+colaborador:colaborador,
 
 descricao:descricao
 
@@ -891,74 +889,78 @@ fetch(API,{
 
 method:"POST",
 
-body:JSON.stringify({
-
-ugd:"UGD-"+ugdSelecionada,
-
-data:data,
-
-colaborador:nome,
-
-descricao:descricao
+body:JSON.stringify(dados)
 
 })
 
-})
 
 .then(res=>res.json())
 
-.then(()=>{
 
-alert("Ocorrência salva no Google Sheets!");
+.then(retorno=>{
+
+
+alert("Ocorrência registrada com sucesso!");
 
 fecharModal();
+
 
 })
 
-.catch(()=>{
+
+.catch(erro=>{
+
 
 alert("Erro ao salvar ocorrência!");
 
+console.log(erro);
+
+
 });
-
-
-alert("Ocorrência salva no Google Sheets!");
-
-fecharModal();
-
 
 
 }
 
 
 
-// ===============================
-// HISTÓRICO DA UGD
-// ===============================
+
+// =====================================
+// CONSULTAR HISTÓRICO DA UGD
+// =====================================
 
 
 function verHistorico(){
 
 
-document.getElementById("modalConteudo").innerHTML=`
+
+document
+.getElementById("modalConteudo")
+.innerHTML=`
 
 <h2>
 Histórico UGD-${ugdSelecionada}
 </h2>
 
 <p>
-Consultando registros...
+Carregando registros...
 </p>
 
 `;
 
 
 
-fetch(API+"?ugd=UGD-"+ugdSelecionada)
+fetch(
+API+"?ugd=UGD-"+ugdSelecionada
+)
+
+
 
 .then(res=>res.json())
 
+
+
 .then(lista=>{
+
 
 
 let tela=`
@@ -973,7 +975,7 @@ Histórico UGD-${ugdSelecionada}
 
 
 
-if(lista.length==0){
+if(lista.length===0){
 
 
 tela+=`
@@ -985,22 +987,36 @@ Nenhuma ocorrência registrada.
 `;
 
 
+
 }
 
 else{
 
 
-lista.reverse().forEach(item=>{
+
+lista.reverse()
+.forEach(item=>{
 
 
 tela+=`
 
+
 <div style="
+
 border:2px solid #ccc;
+
 border-radius:8px;
-padding:10px;
-margin:10px 0;
+
+padding:12px;
+
+margin-top:10px;
+
 ">
+
+
+<b>ID:</b> ${item.id}
+
+<br>
 
 
 <b>Data:</b> ${item.data}
@@ -1016,55 +1032,74 @@ margin:10px 0;
 <b>Descrição:</b>
 
 <p>
+
 ${item.descricao}
+
 </p>
 
 
 </div>
 
 
+
 `;
 
 
+
 });
+
 
 
 }
 
 
 
+
 tela+=`
 
+
 <button class="botao fechar"
+
 onclick="fecharModal()">
 
 Fechar
 
 </button>
 
+
 `;
 
 
 
-document.getElementById("modalConteudo").innerHTML=tela;
+document
+.getElementById("modalConteudo")
+.innerHTML=tela;
 
 
 
 })
 
 
+
 .catch(erro=>{
 
 
-document.getElementById("modalConteudo").innerHTML=`
+document
+.getElementById("modalConteudo")
+.innerHTML=`
 
-<h2>Erro</h2>
+<h2>
+Erro
+</h2>
+
 
 <p>
-Falha ao consultar histórico.
+Não foi possível consultar histórico.
 </p>
 
+
 <button class="botao fechar"
+
 onclick="fecharModal()">
 
 Fechar
@@ -1072,7 +1107,6 @@ Fechar
 </button>
 
 `;
-
 
 console.log(erro);
 
@@ -1080,94 +1114,24 @@ console.log(erro);
 });
 
 
-}
-
-
-
-
-
-}
-
-else{
-
-
-lista.reverse().forEach(item=>{
-
-
-tela+=`
-
-<div style="
-border:2px solid #ccc;
-border-radius:8px;
-padding:10px;
-margin:10px 0;
-">
-
-
-<b>Data:</b> ${item.data}
-
-<br>
-
-
-<b>Colaborador:</b> ${item.nome}
-
-<br><br>
-
-
-<b>Descrição:</b>
-
-<p>
-
-${item.descricao}
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
-tela+=`
-
-<button class="botao fechar"
-onclick="fecharModal()">
-
-Fechar
-
-</button>
-
-`;
-
-
-
-document.getElementById("modalConteudo").innerHTML=tela;
-
-
 
 }
 
 
 
 
-// ===============================
+
+// =====================================
 // FECHAR MODAL
-// ===============================
+// =====================================
 
 
 function fecharModal(){
 
 
-document.getElementById("modal").style.display="none";
+document
+.getElementById("modal")
+.style.display="none";
 
 
 }
@@ -1176,7 +1140,7 @@ document.getElementById("modal").style.display="none";
 
 
 
-// Fechar clicando fora
+// fechar clicando fora
 
 
 window.onclick=function(event){
@@ -1186,16 +1150,18 @@ let modal =
 document.getElementById("modal");
 
 
-if(event.target==modal){
+
+if(event.target===modal){
 
 
-modal.style.display="none";
+fecharModal();
 
 
 }
 
 
 }
+
 
 
 </script>
@@ -1203,6 +1169,4 @@ modal.style.display="none";
 
 </body>
 
-</html> 
-
-</div>
+</html>
