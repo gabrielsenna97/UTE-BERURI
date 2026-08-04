@@ -1,226 +1,436 @@
+/* ==========================================
+   UTE MAUÉS - SUPERVISÓRIO 3D INDUSTRIAL
+   TEMA: VERDE / PRETO / AMARELO
+========================================== */
+
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Roboto',sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
 }
+
+
 
 body{
-    background:#101820;
-    color:#fff;
+
     min-height:100vh;
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        #263238,
+        #050505 70%
+    );
+
+    color:white;
+
+    padding:25px;
+
 }
+
+
+
+
+
+/* PAINEL PRINCIPAL */
+
+.painel{
+
+
+    max-width:1600px;
+
+    margin:auto;
+
+    padding:30px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #252525,
+        #0d0d0d
+    );
+
+
+    border-radius:25px;
+
+
+    border:1px solid #333;
+
+
+    box-shadow:
+
+
+    0 40px 80px rgba(0,0,0,.8),
+
+    inset 0 2px 4px rgba(255,255,255,.08),
+
+    inset 0 -5px 10px rgba(0,0,0,.8);
+
+
+}
+
+
+
+
+
+
+/* CABEÇALHO */
 
 header{
-    background:#0d1117;
-    padding:20px;
-    text-align:center;
-    border-bottom:3px solid #00b894;
-}
 
-header h1{
-    font-size:32px;
-    color:#00d084;
-}
 
-header h2{
-    font-size:18px;
-    color:#dfe6e9;
-    margin-top:8px;
-}
-
-.topo{
-    width:95%;
-    margin:20px auto;
     display:flex;
-    justify-content:center;
-}
 
-#pesquisa{
-    width:350px;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-}
-
-.container{
-    width:95%;
-    margin:auto;
-}
-
-.mapa{
-    display:grid;
-    grid-template-columns:repeat(10,1fr);
-    gap:15px;
-    margin-top:20px;
-}
-
-.ugd{
-    background:#1f2937;
-    border:2px solid #2d3436;
-    border-radius:10px;
-    padding:20px;
-    text-align:center;
-    cursor:pointer;
-    transition:.3s;
-    font-weight:bold;
-    user-select:none;
-}
-
-.ugd:hover{
-    transform:scale(1.08);
-    background:#00b894;
-    color:#fff;
-}
-
-.operando{
-    background:#16a34a;
-}
-
-.restricao{
-    background:#f1c40f;
-    color:#000;
-}
-
-.indisponivel{
-    background:#e74c3c;
-}
-
-.modal{
-    display:none;
-    position:fixed;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.75);
-    justify-content:center;
     align-items:center;
-    z-index:999;
-}
 
-.modal-content{
-    width:90%;
-    max-width:650px;
-    background:#1f2937;
-    border-radius:12px;
+    justify-content:space-between;
+
+
     padding:25px;
-    max-height:90vh;
-    overflow:auto;
+
+
+    border-radius:18px;
+
+
+    background:
+
+
+    linear-gradient(
+        180deg,
+        #00e676,
+        #009624
+    );
+
+
+    box-shadow:
+
+
+    0 20px 40px rgba(0,0,0,.6),
+
+
+    inset 0 3px 5px rgba(255,255,255,.4);
+
+
 }
 
-.modal-content h2{
-    margin-bottom:20px;
-    color:#00d084;
+
+
+
+
+
+
+.logo{
+
+
+    font-size:28px;
+
+    font-weight:900;
+
+    text-shadow:
+
+    0 3px 5px #000;
+
+
 }
 
-.modal-content label{
+
+
+.logo span{
+
+
     display:block;
-    margin-top:15px;
-    margin-bottom:5px;
+
+    font-size:13px;
+
+    font-weight:400;
+
 }
 
-.modal-content input,
-.modal-content textarea{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    font-size:15px;
-}
 
-.modal-content textarea{
-    resize:vertical;
-}
 
-.botoes{
-    margin-top:20px;
-    display:flex;
-    justify-content:flex-end;
-}
 
-.salvar{
-    background:#00b894;
-    color:#fff;
-    border:none;
-    padding:12px 25px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
-}
 
-.salvar:hover{
-    background:#00d084;
-}
 
-.fechar{
-    float:right;
-    font-size:30px;
-    cursor:pointer;
-}
 
-#historico{
-    margin-top:20px;
-}
+.titulo{
 
-.registro{
-    background:#111827;
-    padding:15px;
-    border-left:5px solid #00d084;
-    border-radius:8px;
-    margin-bottom:12px;
-}
 
-.registro strong{
-    color:#00d084;
-}
-
-.registro button{
-    margin-top:10px;
-    background:#e74c3c;
-    border:none;
-    color:#fff;
-    padding:8px 15px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-footer{
-    margin-top:40px;
     text-align:center;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+
+    text-shadow:
+
+
+    0 4px 8px black;
+
+
+}
+
+
+
+.titulo span{
+
+    color:#fff700;
+
+}
+
+
+
+
+
+
+.status{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    font-size:18px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+
+.led{
+
+
+    width:18px;
+
+    height:18px;
+
+
+    border-radius:50%;
+
+
+    background:#00ff55;
+
+
+    box-shadow:
+
+
+    0 0 10px #00ff55,
+
+    0 0 30px #00ff55,
+
+    0 0 60px #00ff55;
+
+
+    animation:piscando 1.5s infinite;
+
+
+}
+
+
+
+@keyframes piscando{
+
+
+50%{
+
+opacity:.4;
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+/* RESUMO */
+
+
+.resumo{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+
+    gap:20px;
+
+
+    margin:30px 0;
+
+
+}
+
+
+
+
+
+
+.card-info{
+
+
+    background:
+
+
+    linear-gradient(
+        145deg,
+        #444,
+        #151515
+    );
+
+
     padding:20px;
+
+
+    text-align:center;
+
+
+    border-radius:15px;
+
+
+    border:2px solid #555;
+
+
+    box-shadow:
+
+
+    0 15px 30px rgba(0,0,0,.7),
+
+
+    inset 0 3px 5px rgba(255,255,255,.15);
+
+
+}
+
+
+
+
+
+.card-info h3{
+
+
+    color:#ccc;
+
+    font-size:16px;
+
+
+}
+
+
+
+.card-info strong{
+
+
+    display:block;
+
+    font-size:45px;
+
+    margin:10px;
+
+
+    color:white;
+
+
+    text-shadow:
+
+    0 3px 8px black;
+
+
+}
+
+
+
+.card-info p{
+
     color:#aaa;
-}
-
-@media(max-width:900px){
-
-.mapa{
-grid-template-columns:repeat(5,1fr);
-}
 
 }
 
-@media(max-width:600px){
 
-.mapa{
-grid-template-columns:repeat(3,1fr);
+
+
+
+.verde{
+
+border-color:#00ff55;
+
+box-shadow:
+
+0 0 20px rgba(0,255,85,.3);
+
 }
 
-header h1{
-font-size:24px;
+
+
+.amarelo{
+
+border-color:#ffc400;
+
+box-shadow:
+
+0 0 20px rgba(255,196,0,.3);
+
 }
 
-header h2{
-font-size:15px;
+
+
+.vermelho{
+
+border-color:#ff1744;
+
+box-shadow:
+
+0 0 20px rgba(255,23,68,.3);
+
 }
 
-#pesquisa{
-width:100%;
-}
 
-.modal-content{
-width:95%;
-}
+
+
+/* TITULO AREA */
+
+
+.titulo-area{
+
+
+    text-align:center;
+
+    margin:35px 0 25px;
+
+
+    font-size:24px;
+
+
+    color:#00ff66;
+
+
+    text-shadow:
+
+
+    0 0 15px #00ff66;
+
 
 }
