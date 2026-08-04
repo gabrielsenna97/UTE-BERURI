@@ -922,9 +922,7 @@ alert("Erro ao salvar ocorrência!");
 });
 
 
-alert("Ocorrência registrada!");
-
-
+alert("Ocorrência salva no Google Sheets!");
 
 fecharModal();
 
@@ -942,12 +940,25 @@ fecharModal();
 function verHistorico(){
 
 
+document.getElementById("modalConteudo").innerHTML=`
 
-let lista =
-ocorrencias.filter(
-item=>item.ugd==ugdSelecionada
-);
+<h2>
+Histórico UGD-${ugdSelecionada}
+</h2>
 
+<p>
+Consultando registros...
+</p>
+
+`;
+
+
+
+fetch(API+"?ugd=UGD-"+ugdSelecionada)
+
+.then(res=>res.json())
+
+.then(lista=>{
 
 
 let tela=`
@@ -972,6 +983,107 @@ Nenhuma ocorrência registrada.
 </p>
 
 `;
+
+
+}
+
+else{
+
+
+lista.reverse().forEach(item=>{
+
+
+tela+=`
+
+<div style="
+border:2px solid #ccc;
+border-radius:8px;
+padding:10px;
+margin:10px 0;
+">
+
+
+<b>Data:</b> ${item.data}
+
+<br>
+
+
+<b>Colaborador:</b> ${item.colaborador}
+
+<br><br>
+
+
+<b>Descrição:</b>
+
+<p>
+${item.descricao}
+</p>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+tela+=`
+
+<button class="botao fechar"
+onclick="fecharModal()">
+
+Fechar
+
+</button>
+
+`;
+
+
+
+document.getElementById("modalConteudo").innerHTML=tela;
+
+
+
+})
+
+
+.catch(erro=>{
+
+
+document.getElementById("modalConteudo").innerHTML=`
+
+<h2>Erro</h2>
+
+<p>
+Falha ao consultar histórico.
+</p>
+
+<button class="botao fechar"
+onclick="fecharModal()">
+
+Fechar
+
+</button>
+
+`;
+
+
+console.log(erro);
+
+
+});
+
+
+}
+
+
+
 
 
 }
