@@ -5,12 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gestão de Ocorrências - UTE Maués</title>
+<title>Grupo Geradores UTE Maués</title>
 
 <style>
 
 :root{
-    --preto:#111;
+    --preto:#111111;
     --verde:#00843D;
     --amarelo:#FFD100;
     --vermelho:#d00000;
@@ -27,11 +27,15 @@
 
 body{
 
-    background:linear-gradient(135deg,#222,#555);
+    background:
+    linear-gradient(135deg,#222,#555);
 
     padding:20px;
 
+    overflow-x:auto;
+
 }
+
 
 
 .container{
@@ -40,7 +44,7 @@ body{
 
     margin:auto;
 
-    background:white;
+    background:#fff;
 
     padding:30px;
 
@@ -59,20 +63,22 @@ body{
     background:
     linear-gradient(
     90deg,
-    #111,
-    #00843D,
-    #FFD100
+    var(--preto),
+    var(--verde),
+    var(--amarelo)
     );
 
     color:white;
 
     text-align:center;
 
-    padding:10px;
+    padding:8px;
 
     font-weight:bold;
 
     border-radius:5px;
+
+    margin-bottom:20px;
 
 }
 
@@ -86,9 +92,9 @@ body{
 
     justify-content:space-between;
 
-    padding:20px 0;
-
     border-bottom:5px solid var(--amarelo);
+
+    padding-bottom:20px;
 
     margin-bottom:25px;
 
@@ -98,13 +104,14 @@ body{
 
 .logo{
 
-    font-size:30px;
+    font-size:32px;
 
     font-weight:900;
 
     color:var(--verde);
 
 }
+
 
 
 .logo small{
@@ -121,9 +128,11 @@ body{
 
 h1{
 
+    flex:1;
+
     text-align:center;
 
-    flex:1;
+    color:var(--preto);
 
 }
 
@@ -170,18 +179,18 @@ h1{
 
     height:75px;
 
-    border:3px solid #111;
+    border:3px solid var(--preto);
 
     border-radius:8px;
 
     background:
-    linear-gradient(145deg,#fff,#ddd);
+    linear-gradient(145deg,#fff,#e5e5e5);
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
     flex-direction:column;
 
@@ -192,12 +201,11 @@ h1{
 }
 
 
-
 .bloco:hover{
 
     transform:scale(1.05);
 
-    background:#fff4b8;
+    background:#fff3b0;
 
 }
 
@@ -213,11 +221,12 @@ h1{
 
 .codigo{
 
-    font-size:12px;
+    font-size:13px;
 
     font-weight:bold;
 
 }
+
 
 
 .numero{
@@ -251,7 +260,6 @@ h1{
 }
 
 
-
 .centro h2{
 
     color:var(--verde);
@@ -259,57 +267,70 @@ h1{
 }
 
 
-/* MODAL */
+.centro p{
+
+    font-weight:bold;
+
+    margin:8px;
+
+}
+
+
+
+/* ==========================
+   JANELA DE OCORRÊNCIA
+========================== */
+
 
 .modal{
 
-    display:none;
+display:none;
 
-    position:fixed;
+position:fixed;
 
-    top:0;
+top:0;
 
-    left:0;
+left:0;
 
-    width:100%;
+width:100%;
 
-    height:100%;
+height:100%;
 
-    background:#0008;
+background:#0008;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    z-index:999;
-
-}
-
-
-
-.caixa-modal{
-
-    width:450px;
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:15px;
-
-    border:4px solid var(--verde);
+z-index:999;
 
 }
 
 
 
-.caixa-modal h2{
+.modal-conteudo{
 
-    text-align:center;
+background:white;
 
-    color:var(--verde);
+width:450px;
 
-    margin-bottom:20px;
+padding:25px;
+
+border-radius:15px;
+
+border:4px solid var(--verde);
+
+}
+
+
+
+.modal-conteudo h2{
+
+text-align:center;
+
+color:var(--verde);
+
+margin-bottom:20px;
 
 }
 
@@ -317,21 +338,21 @@ h1{
 
 .botao{
 
-    width:100%;
+width:100%;
 
-    padding:15px;
+padding:12px;
 
-    margin-top:10px;
+margin-top:10px;
 
-    border:none;
+border:none;
 
-    border-radius:8px;
+border-radius:8px;
 
-    font-size:16px;
+font-weight:bold;
 
-    font-weight:bold;
+cursor:pointer;
 
-    cursor:pointer;
+font-size:16px;
 
 }
 
@@ -339,9 +360,9 @@ h1{
 
 .registrar{
 
-    background:var(--verde);
+background:var(--verde);
 
-    color:white;
+color:white;
 
 }
 
@@ -349,31 +370,9 @@ h1{
 
 .historico{
 
-    background:#333;
+background:#333;
 
-    color:white;
-
-}
-
-
-input, textarea{
-
-    width:100%;
-
-    padding:10px;
-
-    margin-top:8px;
-
-    border:2px solid #aaa;
-
-    border-radius:8px;
-
-}
-
-
-textarea{
-
-    height:120px;
+color:white;
 
 }
 
@@ -381,9 +380,33 @@ textarea{
 
 .fechar{
 
-    background:#d00000;
+background:#d00000;
 
-    color:white;
+color:white;
+
+}
+
+
+
+input,textarea{
+
+width:100%;
+
+padding:10px;
+
+margin-top:8px;
+
+border:2px solid #aaa;
+
+border-radius:8px;
+
+}
+
+
+
+textarea{
+
+height:120px;
 
 }
 
@@ -407,7 +430,6 @@ OLIVEIRA ENERGIA - UTE MAUÉS
 
 <div class="topo">
 
-
 <div class="logo">
 Oliveira Energia
 <small>Desde 1972</small>
@@ -415,10 +437,9 @@ Oliveira Energia
 
 
 <h1>
-GESTÃO DE OCORRÊNCIAS<br>
-GRUPOS GERADORES
+GRUPO GERADORES<br>
+UTE MAUÉS
 </h1>
-
 
 </div>
 
@@ -430,12 +451,16 @@ GRUPOS GERADORES
 
 <h2>60 GRUPOS GERADORES</h2>
 
-<p>Registro e histórico de ocorrências</p>
+<p>360 = 1 GG</p>
+<p>550 = 50 GG</p>
+<p>625 = 3 GG</p>
+<p>KTA = 6 KUMMIS</p>
 
 </div>
 
 
 <div id="inferior" class="inferior"></div>
+
 
 </div>
 
@@ -444,23 +469,21 @@ GRUPOS GERADORES
 
 <div class="modal" id="modal">
 
-
-<div class="caixa-modal" id="conteudoModal">
-
+<div class="modal-conteudo" id="modalConteudo">
 
 </div>
+   <script>
 
-
-</div> <script>
 
 // ===============================
-// MAPA DOS GRUPOS GERADORES
+// CRIAÇÃO DOS BLOCOS
 // ===============================
 
 
 function bloco(c,n,g=false){
 
 return `
+
 <div class="bloco ${g?'grande':''}" onclick="abrirUGD('${n}')">
 
 <div class="codigo">${c}</div>
@@ -468,13 +491,17 @@ return `
 <div class="numero">${n}</div>
 
 </div>
+
 `;
 
 }
 
 
 
-// GRUPOS SUPERIORES
+// ===============================
+// PARTE SUPERIOR
+// ===============================
+
 
 const superior=[
 
@@ -526,28 +553,37 @@ const superior=[
 
 superior.forEach(col=>{
 
+
 let h="<div class='coluna'>";
+
 
 col.forEach(g=>{
 
+
 h+=bloco(g[0],g[1],g[2]);
 
+
 });
+
 
 h+="</div>";
 
+
 document.querySelector("#superior").innerHTML+=h;
+
 
 });
 
 
 
 
-
-// GRUPOS INFERIORES
+// ===============================
+// PARTE INFERIOR
+// ===============================
 
 
 const inferior=[
+
 
 [
 ["550-0589","04"],
@@ -560,6 +596,7 @@ const inferior=[
 ["550-0344R","32"],
 ["550-0596","36"]
 ],
+
 
 
 [
@@ -575,6 +612,7 @@ const inferior=[
 ],
 
 
+
 [
 ["550-0028R","02"],
 ["550-0597","06"],
@@ -586,6 +624,7 @@ const inferior=[
 ["550-0302R","30"],
 ["550-0209R","34"]
 ],
+
 
 
 [
@@ -600,7 +639,9 @@ const inferior=[
 ["550-0482","33"]
 ]
 
+
 ];
+
 
 
 
@@ -630,14 +671,18 @@ document.querySelector("#inferior").innerHTML+=h;
 
 
 
-
 // ===============================
-// ABRIR MENU DA UGD
+// VARIÁVEL DA UGD SELECIONADA
 // ===============================
 
 
 let ugdSelecionada="";
 
+
+
+// ===============================
+// ABRIR MENU DA UGD
+// ===============================
 
 
 function abrirUGD(numero){
@@ -651,11 +696,12 @@ document.getElementById("modal").style.display="flex";
 
 
 
-document.getElementById("conteudoModal").innerHTML=`
+document.getElementById("modalConteudo").innerHTML=`
 
 <h2>
 UGD-${numero}
 </h2>
+
 
 
 <button class="botao registrar"
@@ -683,42 +729,54 @@ Fechar
 
 </button>
 
+
 `;
 
 }
 
 
 
-function fecharModal(){
+// ===============================
+// BANCO DE DADOS LOCAL
+// ===============================
 
-document.getElementById("modal").style.display="none";
 
-}
+let ocorrencias = JSON.parse(
+localStorage.getItem("ocorrencias_ugd")
+) || [];
 
+
+
+
+// ===============================
+// FORMULÁRIO DE REGISTRO
+// ===============================
 
 
 function registrarOcorrencia(){
 
 
-let data=new Date()
+let data = new Date()
 .toLocaleDateString("pt-BR");
 
 
 
-document.getElementById("conteudoModal").innerHTML=`
+document.getElementById("modalConteudo").innerHTML = `
+
 
 <h2>
-Nova Ocorrência<br>
+Registrar Ocorrência<br>
 UGD-${ugdSelecionada}
 </h2>
+
 
 
 <label>
 Data
 </label>
 
-
-<input id="data"
+<input 
+id="dataOcorrencia"
 value="${data}">
 
 
@@ -727,9 +785,9 @@ value="${data}">
 Colaborador
 </label>
 
-
-<input id="nome"
-placeholder="Digite seu nome">
+<input
+id="nomeColaborador"
+placeholder="Digite o nome">
 
 
 
@@ -737,19 +795,21 @@ placeholder="Digite seu nome">
 Descrição da ocorrência
 </label>
 
-
-<textarea id="descricao"
-placeholder="Digite a ocorrência encontrada">
+<textarea
+id="descricaoOcorrencia"
+placeholder="Descreva a ocorrência encontrada">
 </textarea>
+
 
 
 
 <button class="botao registrar"
 onclick="salvarOcorrencia()">
 
-Salvar Ocorrência
+💾 Salvar Ocorrência
 
 </button>
+
 
 
 
@@ -765,42 +825,39 @@ Cancelar
 
 }
 
-<script>
-
-// ===============================
-// BANCO LOCAL DE OCORRÊNCIAS
-// ===============================
-
-
-let ocorrencias = JSON.parse(
-localStorage.getItem("ocorrencias_ugd")
-) || [];
-
-
-
 
 
 // ===============================
-// SALVAR OCORRÊNCIA
+// SALVAR REGISTRO
 // ===============================
 
 
 function salvarOcorrencia(){
 
 
-let data=document.getElementById("data").value;
+let data =
+document.getElementById("dataOcorrencia").value;
 
-let nome=document.getElementById("nome").value;
 
-let descricao=document.getElementById("descricao").value;
+
+let nome =
+document.getElementById("nomeColaborador").value;
+
+
+
+let descricao =
+document.getElementById("descricaoOcorrencia").value;
 
 
 
 if(nome=="" || descricao==""){
 
-alert("Preencha o nome e a descrição da ocorrência");
+
+alert("Preencha todos os campos");
+
 
 return;
+
 
 }
 
@@ -808,6 +865,7 @@ return;
 
 
 let registro={
+
 
 ugd:ugdSelecionada,
 
@@ -817,11 +875,14 @@ nome:nome,
 
 descricao:descricao
 
+
 };
 
 
 
+
 ocorrencias.push(registro);
+
 
 
 
@@ -835,8 +896,7 @@ JSON.stringify(ocorrencias)
 
 
 
-
-alert("Ocorrência registrada com sucesso!");
+alert("Ocorrência registrada!");
 
 
 
@@ -848,50 +908,44 @@ fecharModal();
 
 
 
-
-
 // ===============================
-// MOSTRAR HISTÓRICO
+// HISTÓRICO DA UGD
 // ===============================
 
 
 function verHistorico(){
 
 
-let lista=ocorrencias.filter(
 
+let lista =
+ocorrencias.filter(
 item=>item.ugd==ugdSelecionada
-
 );
 
 
 
-let html=`
+let tela=`
 
 
 <h2>
-
 Histórico UGD-${ugdSelecionada}
-
 </h2>
 
+
 `;
-
-
 
 
 
 if(lista.length==0){
 
 
-html+=`
+tela+=`
 
 <p>
 Nenhuma ocorrência registrada.
 </p>
 
 `;
-
 
 
 }
@@ -902,13 +956,13 @@ else{
 lista.reverse().forEach(item=>{
 
 
-html+=`
+tela+=`
 
 <div style="
 border:2px solid #ccc;
+border-radius:8px;
 padding:10px;
 margin:10px 0;
-border-radius:8px;
 ">
 
 
@@ -924,9 +978,11 @@ border-radius:8px;
 
 <b>Descrição:</b>
 
-<br>
+<p>
 
 ${item.descricao}
+
+</p>
 
 
 </div>
@@ -943,9 +999,7 @@ ${item.descricao}
 
 
 
-
-
-html+=`
+tela+=`
 
 <button class="botao fechar"
 onclick="fecharModal()">
@@ -958,8 +1012,7 @@ Fechar
 
 
 
-
-document.getElementById("conteudoModal").innerHTML=html;
+document.getElementById("modalConteudo").innerHTML=tela;
 
 
 
@@ -968,16 +1021,31 @@ document.getElementById("conteudoModal").innerHTML=html;
 
 
 
+// ===============================
+// FECHAR MODAL
+// ===============================
 
-// ===============================
-// FECHAR CLICANDO FORA
-// ===============================
+
+function fecharModal(){
+
+
+document.getElementById("modal").style.display="none";
+
+
+}
+
+
+
+
+
+// Fechar clicando fora
 
 
 window.onclick=function(event){
 
 
-let modal=document.getElementById("modal");
+let modal =
+document.getElementById("modal");
 
 
 if(event.target==modal){
@@ -992,10 +1060,11 @@ modal.style.display="none";
 }
 
 
-
 </script>
 
 
 </body>
 
-</html>
+</html> 
+
+</div>
