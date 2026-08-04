@@ -1,83 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UTE Maués | Grupo Geradores</title>
+<title>Grupo Geradores UTE Maués</title>
 
 <style>
 
 :root{
-    --azul:#003b70;
-    --azul-claro:#0066aa;
-    --cinza:#f1f3f5;
-    --preto:#222;
-    --borda:#1c1c1c;
-    --branco:#fff;
+    --preto:#111;
+    --verde:#00843D;
+    --amarelo:#FFD100;
+    --cinza:#eeeeee;
 }
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
     font-family:"Segoe UI",Arial,sans-serif;
 }
 
 
 body{
-    background:#dfe6ec;
-    padding:30px;
+
+    background:
+    linear-gradient(135deg,#222,#555);
+
+    padding:25px;
+
 }
+
 
 
 .container{
 
-    max-width:1300px;
+    max-width:1200px;
+
     margin:auto;
 
     background:white;
-    padding:35px;
 
-    border-radius:12px;
+    padding:30px;
 
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.15);
+    border-radius:15px;
+
+    border:4px solid var(--preto);
+
+    box-shadow:0 10px 30px #0008;
+
 }
 
 
 
 /* CABEÇALHO */
 
-.header{
+.faixa{
 
-display:flex;
-align-items:center;
-justify-content:space-between;
+    background:
 
-border-bottom:3px solid var(--azul);
+    linear-gradient(
+    90deg,
+    var(--preto),
+    var(--verde),
+    var(--amarelo)
+    );
 
-padding-bottom:20px;
-margin-bottom:30px;
+    color:white;
+
+    text-align:center;
+
+    padding:8px;
+
+    font-weight:bold;
+
+    border-radius:6px;
+
+    margin-bottom:20px;
 
 }
+
+
+
+.topo{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:5px solid var(--amarelo);
+
+    padding-bottom:20px;
+
+    margin-bottom:25px;
+
+}
+
 
 
 .logo{
 
-font-size:28px;
-font-weight:800;
-color:var(--azul);
+    font-size:30px;
+
+    font-weight:900;
+
+    color:var(--verde);
 
 }
 
 
-.logo span{
+.logo small{
 
-display:block;
-font-size:13px;
-font-weight:400;
+    display:block;
+
+    font-size:13px;
+
+    color:#333;
 
 }
 
@@ -85,9 +126,50 @@ font-weight:400;
 
 h1{
 
-text-align:center;
-font-size:30px;
-color:#222;
+    flex:1;
+
+    text-align:center;
+
+    font-size:30px;
+
+    color:var(--preto);
+
+}
+
+
+
+/* MAPA */
+
+.grid-superior{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:15px;
+
+}
+
+
+.inferior{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+}
+
+
+.coluna,
+.coluna-inferior{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
 
 }
 
@@ -95,56 +177,51 @@ color:#222;
 
 /* GERADORES */
 
-.grid{
+.bloco{
 
-display:grid;
+    min-height:75px;
 
-grid-template-columns:
-repeat(auto-fit,minmax(150px,1fr));
+    border:3px solid var(--preto);
 
-gap:15px;
+    border-radius:8px;
 
-}
+    background:
 
+    linear-gradient(
+    145deg,
+    #fff,
+    var(--cinza)
+    );
 
+    display:flex;
 
-.gerador{
+    flex-direction:column;
 
-height:95px;
+    justify-content:center;
 
-border:2px solid var(--borda);
+    align-items:center;
 
-border-radius:8px;
-
-background:
-linear-gradient(
-135deg,
-#fff,
-#eef4f8
-);
-
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-justify-content:center;
-
-
-transition:.2s;
+    transition:.2s;
 
 }
 
 
 
-.gerador:hover{
+.bloco:hover{
 
-transform:translateY(-4px);
+    border-color:var(--verde);
 
-box-shadow:
-0 8px 15px rgba(0,0,0,.15);
+    box-shadow:0 0 15px var(--verde);
+
+    transform:scale(1.03);
+
+}
+
+
+
+.grande{
+
+    height:180px;
 
 }
 
@@ -152,9 +229,11 @@ box-shadow:
 
 .codigo{
 
-font-size:13px;
+    font-size:13px;
 
-color:#555;
+    font-weight:bold;
+
+    color:#444;
 
 }
 
@@ -162,51 +241,52 @@ color:#555;
 
 .numero{
 
-font-size:38px;
+    font-size:38px;
 
-font-weight:800;
+    font-weight:900;
 
-color:var(--azul);
-
-}
-
-
-
-/* RESUMO */
-
-.resumo{
-
-margin:35px auto;
-
-max-width:450px;
-
-border:2px solid var(--azul);
-
-border-radius:10px;
-
-padding:25px;
-
-text-align:center;
-
-background:#f8fbff;
+    color:var(--verde);
 
 }
 
 
-.resumo h2{
 
-color:var(--azul);
+/* CENTRO */
 
-margin-bottom:15px;
+
+.centro{
+
+    width:450px;
+
+    margin:30px auto;
+
+    padding:25px;
+
+    text-align:center;
+
+    border:4px solid var(--verde);
+
+    border-radius:12px;
+
+    background:#fffbea;
 
 }
 
 
-.resumo p{
+.centro h2{
 
-margin:8px;
+    color:var(--verde);
 
-font-size:18px;
+    margin-bottom:15px;
+
+}
+
+
+.centro p{
+
+    font-weight:bold;
+
+    margin:8px;
 
 }
 
@@ -214,22 +294,45 @@ font-size:18px;
 
 /* MOBILE */
 
+@media(max-width:900px){
 
-@media(max-width:600px){
+.grid-superior{
 
-body{
-padding:10px;
+grid-template-columns:repeat(2,1fr);
+
 }
 
 
-.container{
-padding:20px;
+.inferior{
+
+grid-template-columns:repeat(2,1fr);
+
 }
 
 
-.header{
+.centro{
+
+width:100%;
+
+}
+
+}
+
+
+@media(max-width:500px){
+
+.grid-superior,
+.inferior{
+
+grid-template-columns:1fr;
+
+}
+
+
+.topo{
 
 flex-direction:column;
+
 gap:15px;
 
 }
@@ -243,7 +346,6 @@ font-size:22px;
 
 }
 
-
 </style>
 
 </head>
@@ -255,13 +357,19 @@ font-size:22px;
 <div class="container">
 
 
-<header class="header">
+<div class="faixa">
+OLIVEIRA ENERGIA - SISTEMA DE GERAÇÃO UTE MAUÉS
+</div>
+
+
+
+<div class="topo">
 
 <div class="logo">
 
 Oliveira Energia
 
-<span>Desde 1972</span>
+<small>Desde 1972</small>
 
 </div>
 
@@ -272,19 +380,17 @@ UTE MAUÉS
 </h1>
 
 
-</header>
+</div>
 
 
 
-<section id="geradores" class="grid"></section>
+<div class="grid-superior" id="superior"></div>
 
 
 
-<div class="resumo">
+<div class="centro">
 
-<h2>
-60 GRUPOS GERADORES
-</h2>
+<h2>60 GRUPOS GERADORES</h2>
 
 <p>360 = 1 GG</p>
 <p>550 = 50 GG</p>
@@ -295,6 +401,9 @@ UTE MAUÉS
 
 
 
+<div class="inferior" id="inferior"></div>
+
+
 </div>
 
 
@@ -302,71 +411,174 @@ UTE MAUÉS
 <script>
 
 
-const geradores=[
+function criar(c,n,g=false){
 
+return `
 
-["550-0583","54"],
-["550-0715","53"],
-["550-0038R","52"],
-["625-0017","51"],
-["550-0321R","46"],
+<div class="bloco ${g?'grande':''}">
 
-["1808201","55"],
-["1808203","56"],
-["1808198","57"],
-["1808199","58"],
-["1808205","59"],
-["1808200","60"],
+<div class="codigo">${c}</div>
 
-
-["550-0589","04"],
-["550-0590","08"],
-["550-0598","12"],
-["550-0471","16"],
-["550-0599","20"],
-
-["550-0562","03"],
-["550-0142","07"],
-["550-0591","11"],
-["550-0476","15"],
-
-
-["550-0028R","02"],
-["550-0597","06"],
-["550-0176","10"],
-
-
-["550-0024R","01"],
-["550-0184","05"],
-["550-0565","09"]
-
-
-];
-
-
-
-const painel=document.querySelector("#geradores");
-
-
-geradores.forEach(g=>{
-
-
-painel.innerHTML += `
-
-<div class="gerador">
-
-<div class="codigo">
-${g[0]}
-</div>
-
-<div class="numero">
-${g[1]}
-</div>
+<div class="numero">${n}</div>
 
 </div>
 
 `;
 
+}
+
+
+
+/* POSIÇÃO ORIGINAL SUPERIOR */
+
+
+let superior=[
+
+
+[
+["550-0583","54"],
+["550-0715","53"],
+["550-0038R","52"],
+["625-0017","51"],
+["550-0321R","46"],
+["550-0517","41"]
+],
+
+
+[
+["1808201","55",1],
+["550-0297R","50"],
+["550-0104R","45"],
+["625-0038","40"]
+],
+
+
+[
+["1808203","56",1],
+["625-0019","49"],
+["550-0609R","44"],
+["550-0025R","39"]
+],
+
+
+[
+["1808198","57",1],
+["550-0515","48"],
+["550-0518","43"],
+["550-0582","38"]
+],
+
+
+[
+["1808199","58",1],
+["550-0602","47"],
+["550-0515","42"],
+["550-0251R","37"]
+],
+
+
+[
+["1808205","59",1],
+["1808200","60",1]
+]
+
+];
+
+
+
+superior.forEach(col=>{
+
+let html="<div class='coluna'>";
+
+col.forEach(x=>{
+
+html+=criar(x[0],x[1],x[2]);
+
+});
+
+html+="</div>";
+
+document.querySelector("#superior").innerHTML+=html;
+
+});
+
+
+
+
+/* POSIÇÃO ORIGINAL INFERIOR */
+
+
+let inferior=[
+
+
+[
+["550-0589","04"],
+["550-0590","08"],
+["550-0598","12"],
+["550-0471","16"],
+["550-0599","20"],
+["550-0600","24"],
+["550-0594","28"],
+["550-0344R","32"],
+["550-0596","36"]
+],
+
+
+[
+["550-0562","03"],
+["550-0142","07"],
+["550-0591","11"],
+["550-0476","15"],
+["550-0592","19"],
+["550-0581","23"],
+["550-0366","27"],
+["550-0367","31"],
+["550-0563","35"]
+],
+
+
+[
+["550-0028R","02"],
+["550-0597","06"],
+["550-0176","10"],
+["550-0027R","14"],
+["550-0305","18"],
+["550-05125R","22"],
+["360-0015","26"],
+["550-0302R","30"],
+["550-0209R","34"]
+],
+
+
+[
+["550-0024R","01"],
+["550-0184","05"],
+["550-0565","09"],
+["550-0566","13"],
+["550-0601","17"],
+["550-0593","21"],
+["550-0302R1","25"],
+["550-0241R","29"],
+["550-0482","33"]
+]
+
+];
+
+
+
+inferior.forEach(col=>{
+
+let html="<div class='coluna-inferior'>";
+
+col.forEach(x=>{
+
+html+=criar(x[0],x[1]);
+
+});
+
+html+="</div>";
+
+document.querySelector("#inferior").innerHTML+=html;
 
 });
 
@@ -375,5 +587,4 @@ ${g[1]}
 
 
 </body>
-
 </html>
