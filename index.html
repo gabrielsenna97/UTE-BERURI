@@ -1,372 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UTE Maués - Gestão de Grupos Geradores</title>
-
+<title>UTE Maués - Supervisório 3D</title>
 
 <link rel="stylesheet" href="style.css">
 
-
 </head>
-
 
 <body>
 
 
+<div class="painel">
+
+
 <header>
 
-<h1>UTE MAUÉS</h1>
+<div class="logo">
+OLIVEIRA ENERGIA
+<span>Desde 1972</span>
+</div>
 
-<h2>
-Gestão dos Grupos Geradores
-</h2>
 
-<input 
-type="text"
-placeholder="Pesquisar UGD..."
-id="pesquisa">
+<div class="titulo">
+
+GRUPO GERADORES
+<br>
+<span>UTE MAUÉS</span>
+
+</div>
+
+
+<div class="status">
+
+<div class="led"></div>
+
+SISTEMA ONLINE
+
+</div>
 
 
 </header>
 
 
 
-<main>
+<section class="resumo">
 
 
-<div class="planta">
+<div class="card-info">
 
+<h3>TOTAL</h3>
 
+<strong>60</strong>
 
-<!-- PARTE SUPERIOR -->
+<p>GERADORES</p>
 
-
-<div class="grupo g54">
-UGD-54
-</div>
-
-
-<div class="grupo g55">
-UGD-55
-</div>
-
-
-<div class="grupo g56">
-UGD-56
-</div>
-
-
-<div class="grupo g57">
-UGD-57
-</div>
-
-
-<div class="grupo g58">
-UGD-58
-</div>
-
-
-<div class="grupo g59">
-UGD-59
 </div>
 
 
 
-<div class="grupo g53">
-UGD-53
-</div>
+<div class="card-info verde">
 
+<h3>OPERANDO</h3>
 
-<div class="grupo g52">
-UGD-52
-</div>
+<strong id="online">
+58
+</strong>
 
+<p>ONLINE</p>
 
-
-<div class="grupo g60">
-UGD-60
-</div>
-
-
-
-
-
-<!-- PARTE CENTRAL -->
-
-
-<div class="grupo g51">
-UGD-51
-</div>
-
-<div class="grupo g50">
-UGD-50
-</div>
-
-<div class="grupo g49">
-UGD-49
-</div>
-
-<div class="grupo g48">
-UGD-48
-</div>
-
-<div class="grupo g47">
-UGD-47
 </div>
 
 
 
-<div class="grupo g46">
-UGD-46
-</div>
+<div class="card-info amarelo">
 
-<div class="grupo g45">
-UGD-45
-</div>
+<h3>ATENÇÃO</h3>
 
-<div class="grupo g44">
-UGD-44
-</div>
+<strong id="alarme">
+01
+</strong>
 
-<div class="grupo g43">
-UGD-43
-</div>
+<p>ALARME</p>
 
-<div class="grupo g42">
-UGD-42
 </div>
 
 
 
-<div class="grupo g41">
-UGD-41
+<div class="card-info vermelho">
+
+<h3>PARADOS</h3>
+
+<strong id="parados">
+01
+</strong>
+
+<p>OFFLINE</p>
+
 </div>
 
-<div class="grupo g40">
-UGD-40
-</div>
 
-<div class="grupo g39">
-UGD-39
-</div>
+</section>
 
-<div class="grupo g38">
-UGD-38
-</div>
 
-<div class="grupo g37">
-UGD-37
+
+
+
+<h2 class="titulo-area">
+
+PAINEL DE GRUPOS GERADORES
+
+</h2>
+
+
+
+
+<div id="geradores" class="grid-geradores">
+
+
 </div>
 
 
 
 
 
-<!-- PARTE INFERIOR ESQUERDA -->
+<footer>
 
 
-<div class="grupo g04">
-UGD-04
+<div>
+
+UTE MAUÉS
+
 </div>
 
 
-<div class="grupo g03">
-UGD-03
+<div>
+
+MONITORAMENTO EM TEMPO REAL
+
 </div>
 
 
-<div class="grupo g08">
-UGD-08
-</div>
-
-
-<div class="grupo g07">
-UGD-07
-</div>
-
-
-<div class="grupo g12">
-UGD-12
-</div>
-
-
-<div class="grupo g11">
-UGD-11
-</div>
-
-
-<div class="grupo g16">
-UGD-16
-</div>
-
-
-<div class="grupo g15">
-UGD-15
-</div>
-
-
-<div class="grupo g20">
-UGD-20
-</div>
-
-
-<div class="grupo g19">
-UGD-19
-</div>
-
-
-<div class="grupo g24">
-UGD-24
-</div>
-
-
-<div class="grupo g23">
-UGD-23
-</div>
-
-
-<div class="grupo g28">
-UGD-28
-</div>
-
-
-<div class="grupo g27">
-UGD-27
-</div>
-
-
-<div class="grupo g32">
-UGD-32
-</div>
-
-
-<div class="grupo g31">
-UGD-31
-</div>
-
-
-<div class="grupo g36">
-UGD-36
-</div>
-
-
-<div class="grupo g35">
-UGD-35
-</div>
-
-
-
-
-
-<!-- PARTE INFERIOR DIREITA -->
-
-
-<div class="grupo g02">
-UGD-02
-</div>
-
-
-<div class="grupo g01">
-UGD-01
-</div>
-
-
-<div class="grupo g06">
-UGD-06
-</div>
-
-
-<div class="grupo g05">
-UGD-05
-</div>
-
-
-<div class="grupo g10">
-UGD-10
-</div>
-
-
-<div class="grupo g09">
-UGD-09
-</div>
-
-
-<div class="grupo g14">
-UGD-14
-</div>
-
-
-<div class="grupo g13">
-UGD-13
-</div>
-
-
-<div class="grupo g18">
-UGD-18
-</div>
-
-
-<div class="grupo g17">
-UGD-17
-</div>
-
-
-<div class="grupo g22">
-UGD-22
-</div>
-
-
-<div class="grupo g21">
-UGD-21
-</div>
-
-
-<div class="grupo g26">
-UGD-26
-</div>
-
-
-<div class="grupo g25">
-UGD-25
-</div>
-
-
-<div class="grupo g30">
-UGD-30
-</div>
-
-
-<div class="grupo g29">
-UGD-29
-</div>
-
-
-<div class="grupo g34">
-UGD-34
-</div>
-
-
-<div class="grupo g33">
-UGD-33
-</div>
+</footer>
 
 
 
 </div>
 
 
-</main>
 
-
-
-<script src="app.js"></script>
-
+<script src="script.js"></script>
 
 </body>
 
