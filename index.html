@@ -740,11 +740,16 @@ Fechar
 // BANCO DE DADOS LOCAL
 // ===============================
 
+// ===============================
+// CONEXÃO GOOGLE SHEETS
+// ===============================
 
-let ocorrencias = JSON.parse(
 const API =
-"https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";)
-) || [];
+"https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";
+
+
+// mantém histórico local temporariamente
+let ocorrencias = [];
 
 
 
@@ -882,19 +887,39 @@ descricao:descricao
 
 
 
-ocorrencias.push(registro);
+fetch(API,{
 
+method:"POST",
 
+body:JSON.stringify({
 
+ugd:"UGD-"+ugdSelecionada,
 
-localStorage.setItem(
+data:data,
 
-"ocorrencias_ugd",
+colaborador:nome,
 
-JSON.stringify(ocorrencias)
+descricao:descricao
 
-);
+})
 
+})
+
+.then(res=>res.json())
+
+.then(()=>{
+
+alert("Ocorrência salva no Google Sheets!");
+
+fecharModal();
+
+})
+
+.catch(()=>{
+
+alert("Erro ao salvar ocorrência!");
+
+});
 
 
 alert("Ocorrência registrada!");
