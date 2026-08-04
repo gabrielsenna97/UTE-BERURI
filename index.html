@@ -1,150 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UTE BERURI - Gestão de Anomalias</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTE Maués - Gestão de Ocorrências</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header>
 
-<div>
-<h1>UTE BERURI</h1>
-<p>Sistema de Gestão de Anomalias</p>
-</div>
+    <h1>UTE MAUÉS</h1>
 
-<div id="hora"></div>
+    <h2>Gestão de Ocorrências dos Grupos Geradores</h2>
 
 </header>
 
-<section class="dashboard">
+<div class="topo">
 
-<div class="card">
-<h3>Total</h3>
-<span id="total">0</span>
+<input
+type="text"
+id="pesquisa"
+placeholder="Pesquisar UGD..."
+onkeyup="pesquisarUGD()">
+
 </div>
 
-<div class="card amarelo">
-<h3>Abertas</h3>
-<span id="abertas">0</span>
+<div class="container">
+
+<div id="mapa" class="mapa">
+
+<!-- UGD serão criadas pelo JavaScript -->
+
 </div>
 
-<div class="card azul">
-<h3>Em Andamento</h3>
-<span id="andamento">0</span>
 </div>
 
-<div class="card vermelho">
-<h3>Críticas</h3>
-<span id="criticas">0</span>
-</div>
+<!-- Modal -->
 
-<div class="card verde">
-<h3>Concluídas</h3>
-<span id="concluidas">0</span>
-</div>
-
-</section>
-
-<section class="map" id="mapa">
-
-<img src="imgberuri.png" class="planta">
-
-<div class="ugd-area ugd1" onclick="abrir(1)"><span class="tooltip">UGD 01</span></div>
-<div class="ugd-area ugd2" onclick="abrir(2)"><span class="tooltip">UGD 02</span></div>
-<div class="ugd-area ugd3" onclick="abrir(3)"><span class="tooltip">UGD 03</span></div>
-<div class="ugd-area ugd4" onclick="abrir(4)"><span class="tooltip">UGD 04</span></div>
-<div class="ugd-area ugd5" onclick="abrir(5)"><span class="tooltip">UGD 05</span></div>
-<div class="ugd-area ugd6" onclick="abrir(6)"><span class="tooltip">UGD 06</span></div>
-<div class="ugd-area ugd7" onclick="abrir(7)"><span class="tooltip">UGD 07</span></div>
-
-<div class="ugd-area ugd8" onclick="abrir(8)"><span class="tooltip">UGD 08</span></div>
-<div class="ugd-area ugd9" onclick="abrir(9)"><span class="tooltip">UGD 09</span></div>
-<div class="ugd-area ugd10" onclick="abrir(10)"><span class="tooltip">UGD 10</span></div>
-<div class="ugd-area ugd11" onclick="abrir(11)"><span class="tooltip">UGD 11</span></div>
-<div class="ugd-area ugd12" onclick="abrir(12)"><span class="tooltip">UGD 12</span></div>
-<div class="ugd-area ugd13" onclick="abrir(13)"><span class="tooltip">UGD 13</span></div>
-<div class="ugd-area ugd14" onclick="abrir(14)"><span class="tooltip">UGD 14</span></div>
-
-<div class="ugd-area ugd15" onclick="abrir(15)"><span class="tooltip">UGD 15</span></div>
-<div class="ugd-area ugd16" onclick="abrir(16)"><span class="tooltip">UGD 16</span></div>
-<div class="ugd-area ugd17" onclick="abrir(17)"><span class="tooltip">UGD 17</span></div>
-
-<div class="ugd-area ugd18" onclick="abrir(18)"><span class="tooltip">UGD 18</span></div>
-<div class="ugd-area ugd19" onclick="abrir(19)"><span class="tooltip">UGD 19</span></div>
-<div class="ugd-area ugd20" onclick="abrir(20)"><span class="tooltip">UGD 20</span></div>
-<div class="ugd-area ugd21" onclick="abrir(21)"><span class="tooltip">UGD 21</span></div>
-
-</section>
-
-<section class="container">
-
-<input type="text" id="pesquisa" placeholder="Pesquisar ocorrência...">
-
-<table>
-
-<thead>
-<tr>
-<th>UGD</th>
-<th>OS</th>
-<th>Título</th>
-<th>Status</th>
-<th>Prioridade</th>
-<th>Responsável</th>
-<th>Data</th>
-</tr>
-</thead>
-
-<tbody id="historico"></tbody>
-
-</table>
-
-</section>
-
-<div class="modal" id="modal">
+<div id="modal" class="modal">
 
 <div class="modal-content">
 
-<h2 id="tituloUGD"></h2>
+<span class="fechar" onclick="fecharModal()">&times;</span>
 
-<input id="os" placeholder="Número da OS">
+<h2 id="tituloUGD">UGD</h2>
 
-<input id="titulo" placeholder="Título">
+<label>Data</label>
 
-<textarea id="descricao" placeholder="Descrição"></textarea>
+<input
+type="date"
+id="data">
 
-<select id="categoria">
-<option>Mecânica</option>
-<option>Elétrica</option>
-<option>Instrumentação</option>
-<option>Operação</option>
-</select>
+<label>Colaborador</label>
 
-<select id="prioridade">
-<option>Baixa</option>
-<option>Média</option>
-<option>Alta</option>
-<option>Crítica</option>
-</select>
+<input
+type="text"
+id="colaborador"
+placeholder="Nome do colaborador">
 
-<select id="status">
-<option>Aberto</option>
-<option>Em Andamento</option>
-<option>Concluído</option>
-</select>
+<label>Ocorrência</label>
 
-<input id="responsavel" placeholder="Responsável">
+<textarea
+id="ocorrencia"
+rows="6"
+placeholder="Descreva a ocorrência..."></textarea>
 
-<button onclick="salvar()">Salvar</button>
-<button onclick="fechar()">Fechar</button>
+<div class="botoes">
+
+<button
+class="salvar"
+onclick="salvarRegistro()">
+
+Salvar Registro
+
+</button>
+
+</div>
+
+<hr>
+
+<h3>Histórico</h3>
+
+<div id="historico">
+
+Nenhum registro.
 
 </div>
 
 </div>
+
+</div>
+
+<footer>
+
+UTE Maués © 2026
+
+</footer>
 
 <script src="app.js"></script>
 
