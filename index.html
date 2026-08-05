@@ -8,7 +8,6 @@
 
 <title>Gestão de Ocorrências - UTE Maués</title>
 
-
 <style>
 
 :root{
@@ -189,7 +188,6 @@ h1{
 }
 
 
-
 .contador{
 
     height:20px;
@@ -222,7 +220,6 @@ h1{
     color:var(--verde);
 
 }
-
 
 
 /* CENTRO */
@@ -303,7 +300,6 @@ border-radius:15px;
 
 border:4px solid var(--verde);
 
-
 }
 
 
@@ -339,6 +335,8 @@ font-weight:bold;
 cursor:pointer;
 
 }
+
+
 .registrar{
 
 background:#00843D;
@@ -346,7 +344,6 @@ background:#00843D;
 color:white;
 
 }
-
 
 
 .historico{
@@ -358,7 +355,6 @@ color:white;
 }
 
 
-
 .fechar{
 
 background:#d00000;
@@ -366,7 +362,6 @@ background:#d00000;
 color:white;
 
 }
-
 
 
 input,
@@ -387,7 +382,6 @@ font-size:16px;
 }
 
 
-
 textarea{
 
 height:120px;
@@ -395,112 +389,126 @@ height:120px;
 }
 
 
-/* =====================================
-   AJUSTES PARA CELULAR
-   MANTÉM O DESKTOP IGUAL
-===================================== */
+/* BARRA DE CARREGAMENTO */
+
+.loading-bar{
+
+display:none;
+
+width:100%;
+
+height:10px;
+
+background:#ddd;
+
+border-radius:10px;
+
+overflow:hidden;
+
+margin-top:15px;
+
+}
+
+
+.loading-progress{
+
+width:0%;
+
+height:100%;
+
+background:#00843D;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+
+
+.registrar:disabled{
+
+opacity:.7;
+
+cursor:not-allowed;
+
+}
+
+
+/* CELULAR */
 
 @media(max-width:768px){
 
 
 body{
 
-    padding:8px;
-
-    overflow-x:auto;
+padding:8px;
 
 }
 
-
-/* mantém mapa igual ao computador */
 
 .container{
 
-    width:1200px;
+width:1200px;
 
 }
 
 
-/* modal adaptado */
-
 .modal{
 
-    padding:15px;
+padding:15px;
 
-    align-items:flex-start;
+align-items:flex-start;
 
-    overflow-y:auto;
+overflow-y:auto;
 
 }
 
 
 .modal-conteudo{
 
-    width:100%;
+width:100%;
 
-    max-width:450px;
+max-width:450px;
 
-    margin:20px auto;
+margin:20px auto;
 
-    padding:20px;
-
-}
-
-
-
-.modal-conteudo h2{
-
-    font-size:24px;
+padding:20px;
 
 }
-
 
 
 .botao{
 
-    padding:16px;
+padding:16px;
 
-    font-size:18px;
+font-size:18px;
 
 }
-
 
 
 input,
 textarea{
 
-    padding:16px;
+padding:16px;
 
-    font-size:16px;
+font-size:16px;
 
 }
-
 
 
 textarea{
 
-    height:160px;
-
-}
-
-
-
-button{
-
-    touch-action:manipulation;
+height:160px;
 
 }
 
 
 }
-
 
 </style>
 
-</head>
-
-
-<body>
+</head> <body>
 
 
 <div class="container">
@@ -525,6 +533,7 @@ Oliveira Energia
 </div>
 
 
+
 <h1>
 
 GRUPO GERADORES<br>
@@ -536,13 +545,18 @@ UTE MAUÉS
 </div>
 
 
+
 <div id="superior" class="grid-superior"></div>
+
+
 
 
 <div class="centro">
 
 <h2>
+
 60 GRUPOS GERADORES
+
 </h2>
 
 
@@ -558,10 +572,14 @@ UTE MAUÉS
 </div>
 
 
+
+
 <div id="inferior" class="inferior"></div>
 
 
 </div>
+
+
 
 
 
@@ -577,17 +595,24 @@ UTE MAUÉS
 </div>
 
 
+
+
+
+
 <script>
 
 
+
 // =====================================
-// CRIAÇÃO DOS BLOCOS DAS UGDs
+// CRIAÇÃO DOS BLOCOS
 // =====================================
 
 
 function bloco(codigo,numero,grande=false){
 
+
 return `
+
 
 <div class="bloco ${grande ? "grande":""}"
 
@@ -613,9 +638,15 @@ ${numero}
 
 </div>
 
+
 `;
 
 }
+
+
+
+
+
 // =====================================
 // MAPA SUPERIOR
 // =====================================
@@ -623,64 +654,114 @@ ${numero}
 
 const superior=[
 
+
 [
+
 ["550-0583","54"],
+
 ["550-0715","53"],
+
 ["550-0038R","52"],
+
 ["625-0017","51"],
+
 ["550-0321R","46"],
+
 ["550-0517","41"]
+
 ],
 
+
+
 [
+
 ["1808201","55",1],
+
 ["550-0297R","50"],
+
 ["550-0104R","45"],
+
 ["625-0038","40"]
+
 ],
 
+
+
 [
+
 ["1808203","56",1],
+
 ["625-0019","49"],
+
 ["550-0609R","44"],
+
 ["550-0025R","39"]
+
 ],
 
+
+
 [
+
 ["1808198","57",1],
+
 ["550-0515","48"],
+
 ["550-0518","43"],
+
 ["550-0582","38"]
+
 ],
 
+
+
 [
+
 ["1808199","58",1],
+
 ["550-0602","47"],
+
 ["550-0515","42"],
+
 ["550-0251R","37"]
+
 ],
 
+
+
 [
+
 ["1808205","59",1],
+
 ["1808200","60",1]
+
 ]
+
 
 ];
 
 
 
+
 superior.forEach(coluna=>{
+
 
 let html="<div class='coluna'>";
 
 
 coluna.forEach(item=>{
 
+
 html+=bloco(
+
 item[0],
+
 item[1],
+
 item[2]
+
 );
+
 
 });
 
@@ -688,12 +769,19 @@ item[2]
 html+="</div>";
 
 
+
 document
+
 .getElementById("superior")
+
 .innerHTML+=html;
 
 
+
 });
+
+
+
 
 
 
@@ -706,59 +794,108 @@ document
 const inferior=[
 
 
+
 [
+
 ["550-0589","04"],
+
 ["550-0590","08"],
+
 ["550-0598","12"],
+
 ["550-0471","16"],
+
 ["550-0599","20"],
+
 ["550-0600","24"],
+
 ["550-0594","28"],
+
 ["550-0344R","32"],
+
 ["550-0596","36"]
+
 ],
 
 
+
+
 [
+
 ["550-0562","03"],
+
 ["550-0142","07"],
+
 ["550-0591","11"],
+
 ["550-0476","15"],
+
 ["550-0592","19"],
+
 ["550-0581","23"],
+
 ["550-0366","27"],
+
 ["550-0367","31"],
+
 ["550-0563","35"]
+
 ],
 
 
+
+
 [
+
 ["550-0028R","02"],
+
 ["550-0597","06"],
+
 ["550-0176","10"],
+
 ["550-0027R","14"],
+
 ["550-0305","18"],
+
 ["550-05125R","22"],
+
 ["360-0015","26"],
+
 ["550-0302R","30"],
+
 ["550-0209R","34"]
+
 ],
 
 
+
+
 [
+
 ["550-0024R","01"],
+
 ["550-0184","05"],
+
 ["550-0565","09"],
+
 ["550-0566","13"],
+
 ["550-0601","17"],
+
 ["550-0593","21"],
+
 ["550-0302R1","25"],
+
 ["550-0241R","29"],
+
 ["550-0482","33"]
+
 ]
 
 
 ];
+
+
 
 
 
@@ -768,12 +905,16 @@ inferior.forEach(coluna=>{
 let html="<div class='coluna-inferior'>";
 
 
+
 coluna.forEach(item=>{
 
 
 html+=bloco(
+
 item[0],
+
 item[1]
+
 );
 
 
@@ -783,9 +924,13 @@ item[1]
 html+="</div>";
 
 
+
 document
+
 .getElementById("inferior")
+
 .innerHTML+=html;
+
 
 
 });
@@ -793,8 +938,9 @@ document
 
 
 
+
 // =====================================
-// VARIÁVEL GLOBAL
+// VARIÁVEIS
 // =====================================
 
 
@@ -804,7 +950,7 @@ let ugdSelecionada="";
 
 
 // =====================================
-// GOOGLE APPS SCRIPT
+// API GOOGLE SCRIPT
 // =====================================
 
 
@@ -813,12 +959,9 @@ const API =
 "https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";
 
 
-
-
 // =====================================
 // CONTADOR DE OCORRÊNCIAS
 // =====================================
-
 
 function carregarContadores(){
 
@@ -842,11 +985,13 @@ lista.forEach(item=>{
 let numero=item.ugd.replace("UGD-","");
 
 
+
 if(!contagem[numero]){
 
 contagem[numero]=0;
 
 }
+
 
 
 contagem[numero]++;
@@ -865,9 +1010,7 @@ let campo=document.getElementById("cont-"+ugd);
 
 if(campo){
 
-
 campo.innerHTML=contagem[ugd];
-
 
 }
 
@@ -891,11 +1034,15 @@ console.log("Erro contador:",erro);
 
 
 
-// inicia contador
-
 carregarContadores();
+
+
+
+
+
+
 // =====================================
-// ABRIR MENU DA UGD
+// ABRIR UGD
 // =====================================
 
 
@@ -905,15 +1052,11 @@ function abrirUGD(numero){
 ugdSelecionada=numero;
 
 
-document
-.getElementById("modal")
-.style.display="flex";
+document.getElementById("modal").style.display="flex";
 
 
 
-document
-.getElementById("modalConteudo")
-.innerHTML=`
+document.getElementById("modalConteudo").innerHTML=`
 
 
 <h2>
@@ -928,9 +1071,7 @@ UGD-${numero}
 
 onclick="registrarOcorrencia()">
 
-
 📝 Registrar Ocorrência
-
 
 </button>
 
@@ -940,9 +1081,7 @@ onclick="registrarOcorrencia()">
 
 onclick="verHistorico()">
 
-
 📋 Ver Histórico
-
 
 </button>
 
@@ -953,9 +1092,7 @@ onclick="verHistorico()">
 
 onclick="fecharModal()">
 
-
 Fechar
-
 
 </button>
 
@@ -969,6 +1106,8 @@ Fechar
 
 
 
+
+
 // =====================================
 // FORMULÁRIO DE REGISTRO
 // =====================================
@@ -977,15 +1116,12 @@ Fechar
 function registrarOcorrencia(){
 
 
-let hoje =
-new Date()
-.toLocaleDateString("pt-BR");
+let hoje=new Date().toLocaleDateString("pt-BR");
 
 
 
-document
-.getElementById("modalConteudo")
-.innerHTML=`
+document.getElementById("modalConteudo").innerHTML=`
+
 
 
 <h2>
@@ -1000,6 +1136,7 @@ UGD-${ugdSelecionada}
 
 
 
+
 <label>
 
 Data
@@ -1007,12 +1144,7 @@ Data
 </label>
 
 
-
-<input
-
-id="data"
-
-value="${hoje}">
+<input id="data" value="${hoje}">
 
 
 
@@ -1023,10 +1155,7 @@ Colaborador
 </label>
 
 
-
-<input
-
-id="colaborador"
+<input id="colaborador"
 
 placeholder="Nome do colaborador">
 
@@ -1039,19 +1168,17 @@ Descrição
 </label>
 
 
+<textarea id="descricao"
 
-<textarea
-
-id="descricao"
-
-placeholder="Descrição da ocorrência">
-
-</textarea>
+placeholder="Descrição da ocorrência"></textarea>
 
 
 
 
-<button class="botao registrar"
+
+<button id="btnSalvar"
+
+class="botao registrar"
 
 onclick="salvarOcorrencia()">
 
@@ -1060,6 +1187,22 @@ onclick="salvarOcorrencia()">
 
 
 </button>
+
+
+
+
+<div class="loading-bar" id="barraLoading">
+
+
+<div class="loading-progress"
+
+id="progressoLoading">
+
+
+</div>
+
+
+</div>
 
 
 
@@ -1087,12 +1230,58 @@ Cancelar
 
 
 
+
 // =====================================
-// SALVAR OCORRÊNCIA
+// SALVAR OCORRÊNCIA COM BARRA
 // =====================================
 
 
 function salvarOcorrencia(){
+
+
+
+let botao=document.getElementById("btnSalvar");
+
+let barra=document.getElementById("barraLoading");
+
+let progresso=document.getElementById("progressoLoading");
+
+
+
+botao.disabled=true;
+
+
+botao.innerHTML="⏳ Salvando...";
+
+
+barra.style.display="block";
+
+
+
+let valor=0;
+
+
+
+let animacao=setInterval(()=>{
+
+
+if(valor < 90){
+
+
+valor+=10;
+
+
+progresso.style.width=valor+"%";
+
+
+}
+
+
+},300);
+
+
+
+
 
 
 let dados={
@@ -1117,9 +1306,12 @@ descricao:document.getElementById("descricao").value
 
 fetch(API,{
 
+
 method:"POST",
 
+
 body:JSON.stringify(dados)
+
 
 })
 
@@ -1128,10 +1320,33 @@ body:JSON.stringify(dados)
 .then(()=>{
 
 
+clearInterval(animacao);
+
+
+
+progresso.style.width="100%";
+
+
+
+botao.innerHTML="✅ Salvo!";
+
+
+botao.style.background="#006400";
+
+
+
+setTimeout(()=>{
+
+
 alert("Ocorrência registrada com sucesso!");
 
 
 location.reload();
+
+
+
+},1000);
+
 
 
 })
@@ -1141,10 +1356,25 @@ location.reload();
 .catch(()=>{
 
 
+clearInterval(animacao);
+
+
+
+botao.disabled=false;
+
+
+botao.innerHTML="💾 Salvar";
+
+
+barra.style.display="none";
+
+
+
 alert("Erro ao salvar ocorrência");
 
 
 });
+
 
 
 }
@@ -1163,9 +1393,8 @@ alert("Erro ao salvar ocorrência");
 function verHistorico(){
 
 
-document
-.getElementById("modalConteudo")
-.innerHTML=`
+
+document.getElementById("modalConteudo").innerHTML=`
 
 
 <h2>
@@ -1187,6 +1416,7 @@ Carregando...
 
 
 
+
 fetch(API+"?ugd=UGD-"+ugdSelecionada)
 
 
@@ -1198,7 +1428,9 @@ fetch(API+"?ugd=UGD-"+ugdSelecionada)
 .then(lista=>{
 
 
+
 let tela=`
+
 
 
 <h2>
@@ -1208,7 +1440,9 @@ Histórico UGD-${ugdSelecionada}
 </h2>
 
 
+
 `;
+
 
 
 
@@ -1216,7 +1450,9 @@ Histórico UGD-${ugdSelecionada}
 lista.reverse().forEach(item=>{
 
 
+
 tela+=`
+
 
 
 <div style="
@@ -1232,16 +1468,17 @@ margin-top:10px;
 ">
 
 
+
 <b>ID:</b> ${item.id}
 
-
 <br>
+
 
 
 <b>Data:</b> ${item.data}
 
-
 <br>
+
 
 
 <b>Colaborador:</b> ${item.colaborador}
@@ -1255,6 +1492,7 @@ margin-top:10px;
 <b>Descrição:</b>
 
 
+
 <p>
 
 ${item.descricao}
@@ -1266,14 +1504,18 @@ ${item.descricao}
 </div>
 
 
+
 `;
+
 
 
 });
 
 
 
+
 tela+=`
+
 
 
 <button class="botao fechar"
@@ -1281,9 +1523,7 @@ tela+=`
 onclick="fecharModal()">
 
 
-
 Fechar
-
 
 
 </button>
@@ -1294,16 +1534,19 @@ Fechar
 
 
 
-document
-.getElementById("modalConteudo")
-.innerHTML=tela;
+
+
+document.getElementById("modalConteudo").innerHTML=tela;
 
 
 
 });
 
 
+
 }
+
+
 
 
 
@@ -1318,9 +1561,7 @@ document
 function fecharModal(){
 
 
-document
-.getElementById("modal")
-.style.display="none";
+document.getElementById("modal").style.display="none";
 
 
 }
@@ -1328,7 +1569,10 @@ document
 
 
 
+
+
 window.onclick=function(event){
+
 
 
 let modal=document.getElementById("modal");
@@ -1344,7 +1588,9 @@ fecharModal();
 }
 
 
+
 }
+
 
 
 
@@ -1352,5 +1598,6 @@ fecharModal();
 
 
 </body>
+
 
 </html>
