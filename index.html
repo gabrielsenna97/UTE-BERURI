@@ -442,11 +442,10 @@ cursor:not-allowed;
 
 @media(max-width:768px){
 
+
 body{
 
 padding:8px;
-
-overflow-x:auto;
 
 }
 
@@ -454,11 +453,6 @@ overflow-x:auto;
 .container{
 
 width:1200px;
-
-margin-left:0;
-
-}
-transform-origin:top left;
 
 }
 
@@ -514,32 +508,59 @@ height:160px;
 
 
 }
-    @media(max-width:768px){
+    .lista-celular{
 
-.modal-conteudo{
-
-width:95%;
-
-padding:20px;
+display:none;
 
 }
 
 
-input,
-textarea{
 
-font-size:18px;
+@media(max-width:768px){
+
+
+.grid-superior,
+.inferior,
+.centro{
+
+display:none;
 
 }
 
 
-.botao{
 
-font-size:18px;
+.lista-celular{
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+
+
+.item-ugd{
+
+background:white;
+
+border:3px solid #111;
+
+border-radius:10px;
 
 padding:15px;
 
+text-align:center;
+
+font-size:24px;
+
+font-weight:900;
+
+color:#00843D;
+
 }
+
 
 }
 
@@ -581,7 +602,7 @@ UTE MAUÉS
 
 </div>
 
-
+<div id="listaCelular" class="lista-celular"></div>
 
 <div id="superior" class="grid-superior"></div>
 
@@ -982,6 +1003,26 @@ document
 
 
 let ugdSelecionada="";
+    for(let i=1;i<=60;i++){
+
+
+let numero=i.toString().padStart(2,"0");
+
+
+document.getElementById("listaCelular").innerHTML += `
+
+
+<div class="item-ugd" onclick="abrirUGD('${numero}')">
+
+UGD-${numero}
+
+</div>
+
+
+`;
+
+
+}
 
 
 
