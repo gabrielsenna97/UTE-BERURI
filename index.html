@@ -113,7 +113,6 @@ h1{
 }
 
 
-
 /* MAPA */
 
 .grid-superior{
@@ -190,7 +189,6 @@ h1{
 }
 
 
-/* NOVO - CONTADOR DE OCORRÊNCIAS */
 
 .contador{
 
@@ -259,7 +257,10 @@ h1{
     font-weight:bold;
     margin:8px;
 
-} /* MODAL */
+}
+
+
+/* MODAL */
 
 
 .modal{
@@ -281,7 +282,6 @@ justify-content:center;
 align-items:center;
 
 z-index:999;
-
 
 }
 
@@ -339,9 +339,6 @@ font-weight:bold;
 cursor:pointer;
 
 }
-
-
-
 .registrar{
 
 background:#00843D;
@@ -385,6 +382,7 @@ border:2px solid #aaa;
 
 border-radius:8px;
 
+font-size:16px;
 
 }
 
@@ -393,6 +391,106 @@ border-radius:8px;
 textarea{
 
 height:120px;
+
+}
+
+
+/* =====================================
+   AJUSTES PARA CELULAR
+   MANTÉM O DESKTOP IGUAL
+===================================== */
+
+@media(max-width:768px){
+
+
+body{
+
+    padding:8px;
+
+    overflow-x:auto;
+
+}
+
+
+/* mantém mapa igual ao computador */
+
+.container{
+
+    width:1200px;
+
+}
+
+
+/* modal adaptado */
+
+.modal{
+
+    padding:15px;
+
+    align-items:flex-start;
+
+    overflow-y:auto;
+
+}
+
+
+.modal-conteudo{
+
+    width:100%;
+
+    max-width:450px;
+
+    margin:20px auto;
+
+    padding:20px;
+
+}
+
+
+
+.modal-conteudo h2{
+
+    font-size:24px;
+
+}
+
+
+
+.botao{
+
+    padding:16px;
+
+    font-size:18px;
+
+}
+
+
+
+input,
+textarea{
+
+    padding:16px;
+
+    font-size:16px;
+
+}
+
+
+
+textarea{
+
+    height:160px;
+
+}
+
+
+
+button{
+
+    touch-action:manipulation;
+
+}
+
 
 }
 
@@ -449,8 +547,11 @@ UTE MAUÉS
 
 
 <p>360 = 1 GG</p>
+
 <p>550 = 50 GG</p>
+
 <p>625 = 3 GG</p>
+
 <p>KTA = 6 KUMMIS</p>
 
 
@@ -466,9 +567,12 @@ UTE MAUÉS
 
 <div class="modal" id="modal">
 
+
 <div class="modal-conteudo" id="modalConteudo">
 
+
 </div>
+
 
 </div>
 
@@ -478,7 +582,6 @@ UTE MAUÉS
 
 // =====================================
 // CRIAÇÃO DOS BLOCOS DAS UGDs
-// COM CONTADOR
 // =====================================
 
 
@@ -487,6 +590,7 @@ function bloco(codigo,numero,grande=false){
 return `
 
 <div class="bloco ${grande ? "grande":""}"
+
 onclick="abrirUGD('${numero}')">
 
 
@@ -494,12 +598,16 @@ onclick="abrirUGD('${numero}')">
 
 
 <div class="codigo">
+
 ${codigo}
+
 </div>
 
 
 <div class="numero">
+
 ${numero}
+
 </div>
 
 
@@ -508,9 +616,6 @@ ${numero}
 `;
 
 }
-
-
-
 // =====================================
 // MAPA SUPERIOR
 // =====================================
@@ -566,19 +671,16 @@ const superior=[
 
 superior.forEach(coluna=>{
 
-
 let html="<div class='coluna'>";
 
 
 coluna.forEach(item=>{
-
 
 html+=bloco(
 item[0],
 item[1],
 item[2]
 );
-
 
 });
 
@@ -591,7 +693,12 @@ document
 .innerHTML+=html;
 
 
-}); // =====================================
+});
+
+
+
+
+// =====================================
 // MAPA INFERIOR
 // =====================================
 
@@ -686,7 +793,6 @@ document
 
 
 
-
 // =====================================
 // VARIÁVEL GLOBAL
 // =====================================
@@ -698,14 +804,13 @@ let ugdSelecionada="";
 
 
 // =====================================
-// URL GOOGLE APPS SCRIPT
+// GOOGLE APPS SCRIPT
 // =====================================
 
 
 const API =
 
 "https://script.google.com/macros/s/AKfycbxS3H4OIXRNieWyHZUP5s9yyXIDp9vpVQerZURePcGPBwaZBREUF9V1R1O2YzcxfoZS/exec";
-
 
 
 
@@ -737,13 +842,11 @@ lista.forEach(item=>{
 let numero=item.ugd.replace("UGD-","");
 
 
-
 if(!contagem[numero]){
 
 contagem[numero]=0;
 
 }
-
 
 
 contagem[numero]++;
@@ -788,14 +891,9 @@ console.log("Erro contador:",erro);
 
 
 
-// executa contador ao abrir
+// inicia contador
 
 carregarContadores();
-
-
-
-
-
 // =====================================
 // ABRIR MENU DA UGD
 // =====================================
@@ -819,31 +917,45 @@ document
 
 
 <h2>
+
 UGD-${numero}
+
 </h2>
 
 
+
 <button class="botao registrar"
+
 onclick="registrarOcorrencia()">
+
 
 📝 Registrar Ocorrência
 
+
 </button>
+
 
 
 <button class="botao historico"
+
 onclick="verHistorico()">
+
 
 📋 Ver Histórico
 
+
 </button>
+
 
 
 
 <button class="botao fechar"
+
 onclick="fecharModal()">
 
+
 Fechar
+
 
 </button>
 
@@ -852,6 +964,7 @@ Fechar
 
 
 }
+
 
 
 
@@ -876,41 +989,63 @@ document
 
 
 <h2>
+
 Registrar Ocorrência
+
 <br>
+
 UGD-${ugdSelecionada}
+
 </h2>
 
 
 
 <label>
+
 Data
+
 </label>
 
+
+
 <input
+
 id="data"
+
 value="${hoje}">
 
 
+
 <label>
+
 Colaborador
+
 </label>
 
 
+
 <input
+
 id="colaborador"
+
 placeholder="Nome do colaborador">
 
 
 
 <label>
+
 Descrição
+
 </label>
 
 
+
 <textarea
+
 id="descricao"
+
 placeholder="Descrição da ocorrência">
+
 </textarea>
 
 
@@ -920,9 +1055,12 @@ placeholder="Descrição da ocorrência">
 
 onclick="salvarOcorrencia()">
 
+
 💾 Salvar
 
+
 </button>
+
 
 
 
@@ -931,7 +1069,9 @@ onclick="salvarOcorrencia()">
 
 onclick="fecharModal()">
 
+
 Cancelar
+
 
 </button>
 
@@ -960,14 +1100,18 @@ let dados={
 
 ugd:"UGD-"+ugdSelecionada,
 
+
 data:document.getElementById("data").value,
 
+
 colaborador:document.getElementById("colaborador").value,
+
 
 descricao:document.getElementById("descricao").value
 
 
 };
+
 
 
 
@@ -980,6 +1124,7 @@ body:JSON.stringify(dados)
 })
 
 
+
 .then(()=>{
 
 
@@ -990,6 +1135,7 @@ location.reload();
 
 
 })
+
 
 
 .catch(()=>{
@@ -1008,6 +1154,7 @@ alert("Erro ao salvar ocorrência");
 
 
 
+
 // =====================================
 // HISTÓRICO
 // =====================================
@@ -1016,24 +1163,36 @@ alert("Erro ao salvar ocorrência");
 function verHistorico(){
 
 
-document.getElementById("modalConteudo").innerHTML=`
+document
+.getElementById("modalConteudo")
+.innerHTML=`
+
 
 <h2>
+
 Histórico UGD-${ugdSelecionada}
+
 </h2>
 
+
 <p>
+
 Carregando...
+
 </p>
 
+
 `;
+
 
 
 
 fetch(API+"?ugd=UGD-"+ugdSelecionada)
 
 
+
 .then(res=>res.json())
+
 
 
 .then(lista=>{
@@ -1043,11 +1202,14 @@ let tela=`
 
 
 <h2>
+
 Histórico UGD-${ugdSelecionada}
+
 </h2>
 
 
 `;
+
 
 
 
@@ -1056,33 +1218,49 @@ lista.reverse().forEach(item=>{
 
 tela+=`
 
+
 <div style="
+
 border:2px solid #ccc;
+
 border-radius:8px;
+
 padding:12px;
+
 margin-top:10px;
+
 ">
 
 
 <b>ID:</b> ${item.id}
 
+
 <br>
+
 
 <b>Data:</b> ${item.data}
 
+
 <br>
 
+
 <b>Colaborador:</b> ${item.colaborador}
+
 
 
 <br><br>
 
 
+
 <b>Descrição:</b>
 
+
 <p>
+
 ${item.descricao}
+
 </p>
+
 
 
 </div>
@@ -1097,27 +1275,35 @@ ${item.descricao}
 
 tela+=`
 
+
 <button class="botao fechar"
 
 onclick="fecharModal()">
 
+
+
 Fechar
 
+
+
 </button>
+
 
 
 `;
 
 
 
-document.getElementById("modalConteudo").innerHTML=tela;
+document
+.getElementById("modalConteudo")
+.innerHTML=tela;
+
 
 
 });
 
 
 }
-
 
 
 
@@ -1142,11 +1328,11 @@ document
 
 
 
-
 window.onclick=function(event){
 
 
 let modal=document.getElementById("modal");
+
 
 
 if(event.target===modal){
